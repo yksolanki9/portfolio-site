@@ -1,18 +1,10 @@
-import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
-
-const rootStyles = {
-
-}
+import * as React from "react";
+import type { HeadFC, PageProps } from "gatsby";
 
 const IndexPage: React.FC<PageProps> = () => {
-  return (
-    <div style={rootStyles}>
-      <h1>My portfolio</h1>
-    </div>
-  )
-}
+  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Home Page</title>;
