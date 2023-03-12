@@ -16,3 +16,41 @@ body {
 .experience-section {
   clip-path: polygon(0 10%, 100% 25%, 100% 100%, 0 90%);
 }
+
+.top-container {
+  margin: 24px;
+  padding-left: 16px;
+  border-left: 2px solid white;
+}
+
+.exp-container {
+  background-color: #3f4262;
+  padding: 16px 32px;
+  margin: 12px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.exp-container:before {
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: -35px;
+  height: 12px;
+  width: 12px;
+  background-color: white;
+  border-radius: 100%;
+}
+
+/* .exp-container-icon {
+  position: absolute;
+  top: 22px;
+  left: -44px;
+  height: 36px;
+  width: 36px;
+}
+
+.exp-container-icon img {
+  border-radius: 100%;
+}
+ */
