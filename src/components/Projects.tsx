@@ -5,68 +5,59 @@ import { ProjectCard } from "./Project-card";
 const projects = [
   {
     title: "Comet",
-    description: "A personal daily journal and self reflection mobile app.",
+    description:
+      "A mobile application designed for personal daily journaling and self-reflection. It enables users to upload images and receive daily reminders to write in their journal, making it easier to establish a consistent journaling habit.",
     badges: ["angular", "ionic", "capacitor"],
     redirections: {
-      githubUrl: "",
-      playStoreUrl: "",
-      npmUrl: "",
-      websiteUrl: "",
+      githubUrl: "https://github.com/yksolanki9/comet-ui",
+      playStoreUrl:
+        "https://play.google.com/store/apps/details?id=com.ionic.comet_daily_journal",
     },
   },
   {
     title: "CalendarX",
-    description: "A web application to share meeting slots with clients",
+    description:
+      "A meeting scheduling web application that enables users to share their availibility with others and allows invitees to select a time which works best for them.",
     badges: ["node", "express", "mongodb", "google-apis"],
     redirections: {
-      githubUrl: "",
-      playStoreUrl: "",
-      npmUrl: "",
-      websiteUrl: "",
+      githubUrl: "https://github.com/yksolanki9/calendarX",
     },
   },
   {
     title: "Google Data Studio Connector",
-    description: "A connector google data stydui",
+    description:
+      "A connector that allows users to upload excel files to Google Data Studio and create reports from them. Users can upload files from their computer or search for attachments in their Gmail inbox with a search query.",
     badges: ["node", "express", "mongodb", "passportjs", "google-apps-scripts"],
     redirections: {
-      githubUrl: "",
-      playStoreUrl: "",
-      npmUrl: "",
-      websiteUrl: "",
+      githubUrl: "https://github.com/yksolanki9/excel-data-studio-connector",
     },
   },
   {
     title: "Capacitor Share With Plugin",
-    description: "A capacitor plugin to share your app",
+    description:
+      "A capacitor plugin that allows users to share files from file explorer or any other application and import it into their ionic app.",
     badges: ["java", "capacitor", "typescript"],
     redirections: {
-      githubUrl: "",
-      playStoreUrl: "",
-      npmUrl: "",
-      websiteUrl: "",
+      githubUrl: "https://github.com/yksolanki9/capacitor-share-with-plugin",
+      npmUrl: "https://github.com/yksolanki9/capacitor-share-with-plugin",
     },
   },
   {
     title: "Find My Bank",
-    description: "React application to find the nearest bank",
+    description:
+      "A React application with Node backend which helps users to search for information about their bank branch. It uses dynamic filtering, pagination, API caching and bookmarking.",
     badges: ["react", "node", "express", "postgres"],
     redirections: {
-      githubUrl: "",
-      playStoreUrl: "",
-      npmUrl: "",
-      websiteUrl: "",
+      githubUrl: "https://github.com/yksolanki9/Find-My-Bank",
     },
   },
   {
     title: "Vidya",
-    description: "Landing page for NGO website with donation",
+    description:
+      "A NGO landing page designed with Razorpay payment integration which allows visitors to make donation.",
     badges: ["react", "material-ui", "razorpay"],
     redirections: {
-      githubUrl: "",
-      playStoreUrl: "",
-      npmUrl: "",
-      websiteUrl: "",
+      githubUrl: "https://github.com/yksolanki9/vidya-ngo",
     },
   },
 ];
@@ -79,13 +70,6 @@ export const Projects = () => {
         {projects.map((project) => (
           <ProjectCard project={project}></ProjectCard>
         ))}
-
-        <div className="card">
-          <p>Creating a card to see how it'll look in dark mode</p>
-        </div>
-        <div className="card">
-          <p>Creating a card to see how it'll look in dark mode</p>
-        </div>
       </div>
     </div>
   );
