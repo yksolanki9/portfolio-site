@@ -18,7 +18,7 @@ const projects = [
     title: "CalendarX",
     description:
       "A meeting scheduling web application that enables users to share their availibility with others and allows invitees to select a time which works best for them.",
-    badges: ["node", "express", "mongodb", "google-apis"],
+    badges: ["express", "mongodb", "googlecloud"],
     redirections: {
       githubUrl: "https://github.com/yksolanki9/calendarX",
     },
@@ -27,7 +27,7 @@ const projects = [
     title: "Google Data Studio Connector",
     description:
       "A connector that allows users to upload excel files to Google Data Studio and create reports from them. Users can upload files from their computer or search for attachments in their Gmail inbox with a search query.",
-    badges: ["node", "express", "mongodb", "passportjs", "google-apps-scripts"],
+    badges: ["express", "mongodb", "googleAppScript"],
     redirections: {
       githubUrl: "https://github.com/yksolanki9/excel-data-studio-connector",
     },
@@ -46,7 +46,7 @@ const projects = [
     title: "Find My Bank",
     description:
       "A React application with Node backend which helps users to search for information about their bank branch. It uses dynamic filtering, pagination, API caching and bookmarking.",
-    badges: ["react", "node", "express", "postgres"],
+    badges: ["react", "express", "postgres"],
     redirections: {
       githubUrl: "https://github.com/yksolanki9/Find-My-Bank",
     },
@@ -55,7 +55,7 @@ const projects = [
     title: "Vidya",
     description:
       "A NGO landing page designed with Razorpay payment integration which allows visitors to make donation.",
-    badges: ["react", "material-ui", "razorpay"],
+    badges: ["react", "materialUI", "razorpay"],
     redirections: {
       githubUrl: "https://github.com/yksolanki9/vidya-ngo",
     },

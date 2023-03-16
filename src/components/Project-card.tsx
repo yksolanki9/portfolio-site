@@ -19,7 +19,7 @@ export const ProjectCard = ({ project }) => {
         <div className="text-xs font-light pt-2">{description}</div>
 
         {badges.map((badge) => (
-          <img className="inline p-2" src={badgeUrlMapping[badge]} />
+          <img className="inline p-1 h-8" src={badgeUrlMapping[badge]} />
         ))}
       </div>
     </a>
