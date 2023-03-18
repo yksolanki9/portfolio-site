@@ -66,7 +66,7 @@ export const Projects = () => {
   return (
     <div className="2xl:pt-64 mt-20 py-40 px-16 bg-gray-800 about-section">
       <h2 className="text-5xl pb-4 text-center">Projects</h2>
-      <div className="grid grid-cols-2 gap-4 justify-center justify-items-center">
+      <div className="grid grid-cols-2 gap-4 justify-center justify-items-center w-fit m-auto">
         {projects.map((project) => (
           <ProjectCard project={project}></ProjectCard>
         ))}
