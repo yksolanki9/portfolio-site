@@ -8,7 +8,7 @@ export const ProjectCard = ({ project }) => {
   const { title, description, badges, redirections } = project;
   return (
     <a href={redirections.githubUrl} target={"_blank"}>
-      <div className="card flex flex-col min-h-full">
+      <div className="p-4 m-2 border border-white border-opacity-25 rounded-lg flex flex-col min-h-full">
         <div className="flex justify-between">
           <div>{title}</div>
           <div>
