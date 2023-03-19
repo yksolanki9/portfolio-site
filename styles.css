@@ -33,6 +33,7 @@ body {
 .top-container {
   margin: 24px;
   position: relative;
+  padding-top: 36px;
 }
 
 .top-container::after {
@@ -59,13 +60,22 @@ body {
   left: 50%;
 }
 
+/* .exp-container::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  background: white;
+  z-index: 1;
+} */
+
 .exp-container::after {
   content: '';
   position: absolute;
-  top: 35px;
-  right: -6px;
-  height: 12px;
-  width: 12px;
+  top: 60px;
+  right: -10px;
+  height: 18px;
+  width: 18px;
   background-color: rgb(21 94 117);
   border: 2px solid white;
   border-radius: 100%;
@@ -73,12 +83,12 @@ body {
 }
 
 .exp-container.right::after {
-  left: -6px;
+  left: -8px;
 }
 
 .exp-container .date {
   position: absolute;
-  top: calc(50% - 24px);
+  top: calc(50% - 14px);
 }
 
 .exp-container.left .date {
@@ -92,9 +102,14 @@ body {
 .exp-container .content {
   background-color: #3f4262;
   margin: 0 24px;
-  padding: 16px;
+  padding: 32px 16px;
   border-radius: 8px;
+  text-align: right;
 }
+
+  .exp-container.right .content {
+    text-align: left;
+  }
 
 .subtitle {
   font-weight: 200;
@@ -102,3 +117,89 @@ body {
   font-style: italic;
   padding-top: 4px;
 }
+
+@media screen and (max-width: 800px) {
+  .top-container {
+    margin: 4px;
+  }
+
+  .exp-container {
+    width: 40%;
+  }
+
+  .exp-container .content {
+    margin: 0 8px;
+  }
+
+  .exp-container.left {
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .exp-container {
+    width: 30%;
+  }
+
+  .exp-container.left {
+    left: 20%;
+  }
+}
+
+/* Need to change this drastically for sceens less than 520px */
+@media screen and (max-width: 520px) {
+  
+}
+
+/* 
+ @media screen and (max-width: 800px) {
+  .top-container::after {
+    left: 208px;
+  }
+
+  .exp-container {
+    width: 100%;
+    padding-left: 120px;
+    padding-right: 30px;
+    margin-left: 130px;
+    
+  }
+
+  //padding: 12px;
+   // position: relative;
+   // width: 100%;
+
+  .exp-container.right {
+    left: 0%;
+  }
+
+  .exp-container.left::after, 
+  .exp-container.right::after {
+    left: 202px;
+  }
+
+  .exp-container.left::before,
+  .exp-container.right::before {
+    left: 100px;
+    border-color: transparent #006E51 transparent transparent;
+  }
+
+  .exp-container.left .date,
+  .exp-container.right .date {
+    right: auto;
+    left: 55px;
+  }
+
+  // .exp-container.left .icon,
+  .exp-container.right .icon {
+    right: auto;
+    left: 146px;
+  //}
+
+  //.exp-container.left .content,
+  //.exp-container.right .content {
+  //   padding: 30px 30px 30px 90px;
+  //  border-radius: 500px 0 0 500px;
+  //  text-align: left;
+  //}
+} */
