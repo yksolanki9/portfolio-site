@@ -163,11 +163,13 @@ body {
   }
 
   .exp-container.left .date, .exp-container.right .date {
-    left: -126px;
-    right: 0;
+    left: auto;
+    right: auto;
     top: -16px;
     font-weight: 300;
     font-size: 14px;
+    position: absolute;
+    padding-left: 10px;
   }
 
   .exp-container.left .content, .exp-container.right .content {
