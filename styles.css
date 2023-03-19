@@ -146,60 +146,40 @@ body {
   }
 }
 
-/* Need to change this drastically for sceens less than 520px */
 @media screen and (max-width: 520px) {
-  
+  .section {
+    min-width: 100%;
+  }
+
+  .top-container::after {
+    left: 16px;
+  }
+
+  .exp-container.left, .exp-container.right {
+    width: 100%;
+    left: 0;
+    padding: 12px 0 12px 24px;
+    margin-top: 24px;
+  }
+
+  .exp-container.left .date, .exp-container.right .date {
+    left: -126px;
+    right: 0;
+    top: -16px;
+    font-weight: 300;
+    font-size: 14px;
+  }
+
+  .exp-container.left .content, .exp-container.right .content {
+    text-align: left;
+    padding: 16px;
+  }
+
+  .exp-container.left::after, .exp-container.right::after {
+    left: 10px;
+    top: -14px;
+    height: 14px;
+    width: 14px;
+  }
 }
 
-/* 
- @media screen and (max-width: 800px) {
-  .top-container::after {
-    left: 208px;
-  }
-
-  .exp-container {
-    width: 100%;
-    padding-left: 120px;
-    padding-right: 30px;
-    margin-left: 130px;
-    
-  }
-
-  //padding: 12px;
-   // position: relative;
-   // width: 100%;
-
-  .exp-container.right {
-    left: 0%;
-  }
-
-  .exp-container.left::after, 
-  .exp-container.right::after {
-    left: 202px;
-  }
-
-  .exp-container.left::before,
-  .exp-container.right::before {
-    left: 100px;
-    border-color: transparent #006E51 transparent transparent;
-  }
-
-  .exp-container.left .date,
-  .exp-container.right .date {
-    right: auto;
-    left: 55px;
-  }
-
-  // .exp-container.left .icon,
-  .exp-container.right .icon {
-    right: auto;
-    left: 146px;
-  //}
-
-  //.exp-container.left .content,
-  //.exp-container.right .content {
-  //   padding: 30px 30px 30px 90px;
-  //  border-radius: 500px 0 0 500px;
-  //  text-align: left;
-  //}
-} */
