@@ -1,6 +1,6 @@
 import React from "react";
 
-export const About = () => {
+export const About = (props: any) => {
   return (
     <div className="2xl:pt-64 pt-40 px-16 h-screen bg-gray-800 about-section">
       <div className="flex w-9/10 md:w-4/5 xxl:w-2/3 max-w-250 mx-auto">
@@ -13,16 +13,7 @@ export const About = () => {
             />
           </svg>
         </div>
-        <div className="text-lg pt-8 md:pt-16 pl-8">
-          I’m a Full Stack Developer from Mumbai, India. I am passionate about
-          developing robust and scalable solutions for complex problems. As a
-          full-stack developer, I have expertise in both front-end and back-end
-          development, allowing me to build comprehensive and end-to-end web
-          applications. I have worked with a variety of technologies and
-          programming languages, including Angular, Ionic, React, Gatsby,
-          Capacitor, NodeJS, NestJS, and MongoDB. I am always eager to learn new
-          skills and stay up-to-date with the latest industry trends.
-        </div>
+        <div className="text-lg pt-8 md:pt-16 pl-8">{props.about}</div>
       </div>
     </div>
   );

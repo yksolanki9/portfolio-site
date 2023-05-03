@@ -1,35 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 
-const workExp = [
-  {
-    period: "Aug 2022 - Present",
-    title: "Fyle | Member of Technical Staff II",
-    description: "Angular, Ionic, Capacitor",
-  },
-  {
-    period: "Jan 2022 - Jul 2022",
-    title: "Fyle | Member of Technical Staff I",
-    description: "Angular, Ionic, Capacitor",
-  },
-  {
-    period: "Aug 2021 - Jan 2022",
-    title: "Fyle | Full Stack Developer Intern",
-    description: "Angular, Ionic, Capacitor",
-  },
-  {
-    period: "Jun 2021 - Jul 2021",
-    title: "Jeevam Health | Backend Intern",
-    description: "NodeJs, ExpressJs, MongoDB",
-  },
-  {
-    period: "May 2020 - Jul 2020",
-    title: "Samsung Research | SDE Intern",
-    description: "Matlab, NYUSIM, Channel Simulations",
-  },
-];
-
-export const Experience = () => {
+export const Experience = (props: any) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   window.addEventListener("resize", (event: UIEvent) => {
     const w = event.target as Window;
@@ -41,11 +13,12 @@ export const Experience = () => {
       <div className="page">
         <div className="section">
           <div className="top-container">
-            {workExp.map((exp, index) => (
+            {props.workExperience.map((exp: any, index: number) => (
               <div
                 className={
                   "exp-container " + (index % 2 !== 0 ? "right" : "left")
                 }
+                key={index}
               >
                 {/* className=
                 {"exp-container " +
