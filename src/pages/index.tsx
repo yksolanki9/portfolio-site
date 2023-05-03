@@ -5,6 +5,7 @@ import { Home } from "../components/Home";
 import { Experience } from "../components/Experience";
 import { Projects } from "../components/Projects";
 import { Blogs } from "../components/Blogs";
+import { Contact } from "../components/Contact";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -14,6 +15,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Experience></Experience>
       <Projects></Projects>
       <Blogs></Blogs>
+      <Contact></Contact>
     </div>
   );
 };
