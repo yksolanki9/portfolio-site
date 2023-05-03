@@ -6,19 +6,20 @@ import { Experience } from "../components/Experience";
 import { Projects } from "../components/Projects";
 import { Blogs } from "../components/Blogs";
 import { Contact } from "../components/Contact";
-import { about } from "../data/about";
+import { name, title, about } from "../data/about";
 import { workExperience } from "../data/work-experience";
 import { projects } from "../data/projects";
+import { urls } from "../data/contact";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <div>
-      <Home></Home>
+      <Home name={name} title={title}></Home>
       <About about={about}></About>
       <Experience workExperience={workExperience}></Experience>
       <Projects projects={projects}></Projects>
       <Blogs></Blogs>
-      <Contact></Contact>
+      <Contact urls={urls}></Contact>
     </div>
   );
 };

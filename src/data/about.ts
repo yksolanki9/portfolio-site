@@ -6,3 +6,7 @@ export const about = `I’m a Full Stack Developer from Mumbai, India. I am pass
   programming languages, including Angular, Ionic, React, Gatsby,
   Capacitor, NodeJS, NestJS, and MongoDB. I am always eager to learn new
   skills and stay up-to-date with the latest industry trends.`;
+
+export const name = "Yash Solanki";
+
+export const title = "Full Stack Developer";

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const Home = () => {
+export const Home = (props: any) => {
   return (
     <div className="pt-12 px-16 h-screen">
       <div className="flex float-right">
@@ -14,9 +14,10 @@ export const Home = () => {
       <div className="my-24 mx-12">
         <h3 className="text-8xl pt-4 font-bold">Hello,</h3>
         <h1 className="text-8xl pt-4 font-bold">
-          I'm Yash Solanki<span>.</span>
+          I'm {props.name}
+          <span>.</span>
         </h1>
-        <h5 className="text-4xl font-extralight pt-4">Full Stack Developer</h5>
+        <h5 className="text-4xl font-extralight pt-4">{props.title}</h5>
       </div>
     </div>
   );
