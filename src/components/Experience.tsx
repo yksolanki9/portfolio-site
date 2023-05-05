@@ -1,12 +1,6 @@
 import * as React from "react";
-import { useState } from "react";
 
 export const Experience = (props: any) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  window.addEventListener("resize", (event: UIEvent) => {
-    const w = event.target as Window;
-    setWindowWidth(w.innerWidth);
-  });
   return (
     <div className="2xl:pt-64 pt-56 pb-40 lg:px-16 px-2  h-fit bg-cyan-800 experience-section">
       <h2 id="experience" className="text-5xl pt-4 text-center">
@@ -22,9 +16,6 @@ export const Experience = (props: any) => {
                 }
                 key={index}
               >
-                {/* className=
-                {"exp-container " +
-                  (index % 2 !== 0 || windowWidth < 800 ? "right" : "left")} */}
                 <div className="date">{exp.period}</div>
                 <div className="content">
                   <div>{exp.title}</div>
