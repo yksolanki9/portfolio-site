@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "deploy": "gatsby build && gh-pages -d public"
+    "deploy": "gatsby build && gh-pages -d public -b main --repo https://github.com/yksolanki9/yksolanki9.github.io.git"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
