@@ -3,22 +3,25 @@ import * as React from "react";
 export const Home = (props: any) => {
   return (
     <div className="pt-12 min-[1100px]:px-16 md:px-8 px-4 h-screen">
-      <div className="flex float-right">
-        <div className="px-6">
-          <a href="#about">About</a>
-        </div>
-        <div className="px-6">
-          <a href="#experience">Experience</a>
-        </div>
-        <div className="px-6">
-          <a href="#projects">Projects</a>
-        </div>
-        {/* <div className="px-6">Blogs</div> */}
-        <div className="px-6">
-          <a href="#">Resume</a>
-        </div>
-        <div className="px-6">
-          <a href="#contact">Contact</a>
+      {/* TODO: Replace this with sidebar */}
+      <div className="hidden sm:block">
+        <div className="flex float-right ">
+          <div className="px-6">
+            <a href="#about">About</a>
+          </div>
+          <div className="px-6">
+            <a href="#experience">Experience</a>
+          </div>
+          <div className="px-6">
+            <a href="#projects">Projects</a>
+          </div>
+          {/* <div className="px-6">Blogs</div> */}
+          <div className="px-6">
+            <a href="#">Resume</a>
+          </div>
+          <div className="px-6">
+            <a href="#contact">Contact</a>
+          </div>
         </div>
       </div>
       <div className="relative top-1/3 lg:mx-12 mx-4">
