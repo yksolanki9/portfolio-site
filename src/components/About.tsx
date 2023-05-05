@@ -6,13 +6,16 @@ export const About = (props: any) => {
   return (
     <div
       id="about"
-      className="2xl:pt-64 pt-40 px-16 h-screen bg-gray-800 about-section"
+      className="2xl:pt-64 lg:pt-32 min-[700px]:pt-24 lg:p-16 max-[400px]:p-4 p-8 md:h-screen bg-gray-800 about-section"
     >
-      <div className="flex w-9/10 md:w-4/5 xxl:w-2/3 max-w-250 mx-auto">
-        <div className="min-w-[40%]">
-          <img className="p-10" src={profileImage} />
+      <div className="flex md:flex-row flex-col justify-center h-full items-center pb-10">
+        <div className="xl:basis-3/12 lg:basis-4/12 basis-5/12 pt-20 md:pt-0">
+          <img
+            className="h-[200px] sm:h-[300px] md:h-auto"
+            src={profileImage}
+          />
         </div>
-        <div className="text-lg pt-8 md:pt-16 pl-8 font-light">
+        <div className="text-md md:text-lg md:leading-8 font-light md:pl-10 pt-10 pb-20 md:py-0 xl:basis-5/12 lg:basis-6/12 basis-7/12">
           {props.about}
         </div>
       </div>
