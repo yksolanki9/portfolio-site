@@ -4,7 +4,10 @@ import profileImage from "../images/profile.png";
 
 export const About = (props: any) => {
   return (
-    <div className="2xl:pt-64 pt-40 px-16 h-screen bg-gray-800 about-section">
+    <div
+      id="about"
+      className="2xl:pt-64 pt-40 px-16 h-screen bg-gray-800 about-section"
+    >
       <div className="flex w-9/10 md:w-4/5 xxl:w-2/3 max-w-250 mx-auto">
         <div className="min-w-[40%]">
           <img className="p-10" src={profileImage} />

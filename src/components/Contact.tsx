@@ -12,7 +12,7 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 export const Contact = ({ urls }: any) => {
   return (
     <div className="py-24 lg:px-16 px-2 h-fit text-center">
-      <div className="text-xl pb-4 text-thin">
+      <div id="contact" className="text-xl pb-4 text-thin">
         Feel free to reach out to me on
       </div>
       <div>
