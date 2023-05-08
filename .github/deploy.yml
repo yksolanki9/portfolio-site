@@ -1,0 +1,20 @@
+name: Deploy gatsby application to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: main
+          working-dir: public
+          deploy-repo: https://github.com/yksolanki9/yksolanki9.github.io.git
+          git-config-name: yksolanki9
+          git-config-email: yashsolanki1709@gmail.com
