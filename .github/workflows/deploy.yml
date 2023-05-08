@@ -14,6 +14,6 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: main
-          deploy-repo: https://github.com/yksolanki9/yksolanki9.github.io.git
+          deploy-repo: yksolanki9.github.io
           git-config-name: yksolanki9
           git-config-email: yashsolanki1709@gmail.com
