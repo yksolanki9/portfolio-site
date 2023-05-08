@@ -18,10 +18,10 @@ export const ProjectCard = ({ project }) => {
         <div className="text-sm leading-6 font-light pt-2 flex-1 text-slate-200">
           {description}
         </div>
-        <div className="pt-2 mt-auto">
+        <div className="mt-auto">
           {badges.map((badge, index) => (
             <img
-              className="inline pr-2 last:pr-0 h-6"
+              className="inline mr-2 last:mr-0 mt-2 h-5 min-[450px]:h-6"
               key={index}
               src={badgeUrlMapping[badge]}
             />
