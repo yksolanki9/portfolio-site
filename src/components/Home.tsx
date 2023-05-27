@@ -17,7 +17,12 @@ export const Home = (props: any) => {
           </div>
           {/* <div className="px-6">Blogs</div> */}
           <div className="px-6">
-            <a href="#">Resume</a>
+            <a
+              href="https://drive.google.com/file/d/1bqvbs_oy0wBS5U0bQCVIFKId4Gqhp-UA/view?usp=sharing"
+              target="_blank"
+            >
+              Resume
+            </a>
           </div>
           <div className="px-6">
             <a href="#contact">Contact</a>
