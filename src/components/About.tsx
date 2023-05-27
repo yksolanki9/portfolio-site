@@ -6,7 +6,7 @@ export const About = (props: any) => {
   return (
     <div
       id="about"
-      className="2xl:pt-64 lg:pt-32 min-[700px]:pt-24 lg:p-16 max-[400px]:p-4 p-8 md:h-screen bg-gray-800 about-section"
+      className="2xl:pt-64 lg:pt-32 min-[700px]:pt-24 lg:p-16 max-[400px]:p-4 p-8 md:h-screen about-section"
     >
       <div className="flex md:flex-row flex-col justify-center h-full items-center pb-10">
         <div className="xl:basis-3/12 lg:basis-4/12 basis-5/12 pt-20 md:pt-0">

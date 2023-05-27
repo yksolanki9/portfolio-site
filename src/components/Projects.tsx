@@ -4,7 +4,7 @@ import { ProjectCard } from "./Project-card";
 
 export const Projects = ({ projects }) => {
   return (
-    <div className="2xl:pt-64 mt-20 py-40 px-2 lg:px-16 bg-gray-800 project-section">
+    <div className="2xl:pt-64 mt-20 py-40 px-2 lg:px-16 project-section">
       <h2 id="projects" className="text-3xl sm:text-5xl py-4 text-center">
         Projects
       </h2>
