@@ -8,7 +8,6 @@ export const MenuIcon = (props: any) => {
         id="menu-toggle"
         className="peer"
       />
-      <div>Testing this</div>
       <label htmlFor="menu-toggle">
         <div className="icon-container">
           <div className="w-1/2"></div>
