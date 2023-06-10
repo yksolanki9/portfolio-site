@@ -1,4 +1,5 @@
 import * as React from "react";
+import { MenuIcon } from "./MenuIcon";
 
 export const Home = (props: any) => {
   return (
@@ -28,6 +29,19 @@ export const Home = (props: any) => {
             <a href="#contact">Contact</a>
           </div>
         </div>
+      </div>
+      <div className="float-right sm:hidden">
+        {/* <input
+          type="checkbox"
+          className="peer absolute h-[30px] w-[30px] opacity-0"
+          id="menuIcon"
+        />
+        <label htmlFor="menuIcon" className="peer-checked:bg-yellow-400">
+          <span className="">
+            <FontAwesomeIcon icon="bars" className="h-[20px] w-[20px]" />
+          </span>
+        </label> */}
+        <MenuIcon />
       </div>
       <div className="relative top-1/3 lg:mx-12 mx-4">
         <h3 className="min-[1000px]:text-8xl min-[700px]:text-7xl min-[500px]:text-5xl text-3xl font-bold">
