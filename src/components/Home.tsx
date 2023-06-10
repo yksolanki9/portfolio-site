@@ -1,60 +1,33 @@
 import * as React from "react";
 import { MenuIcon } from "./MenuIcon";
+import { NavBar } from "./NavBar";
 
 export const Home = (props: any) => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   return (
     <div className="pt-12 min-[1100px]:px-16 md:px-8 px-4 h-screen">
-      {/* TODO: Replace this with sidebar */}
       <div className="hidden sm:block">
-        <div className="flex float-right ">
-          <div className="px-6">
-            <a href="#about">About</a>
-          </div>
-          <div className="px-6">
-            <a href="#experience">Experience</a>
-          </div>
-          <div className="px-6">
-            <a href="#projects">Projects</a>
-          </div>
-          {/* <div className="px-6">Blogs</div> */}
-          <div className="px-6">
-            <a
-              href="https://drive.google.com/file/d/1bqvbs_oy0wBS5U0bQCVIFKId4Gqhp-UA/view?usp=sharing"
-              target="_blank"
-            >
-              Resume
-            </a>
-          </div>
-          <div className="px-6">
-            <a href="#contact">Contact</a>
-          </div>
+        <NavBar isMobileView={false} />
+      </div>
+      {isMenuOpen && <NavBar isMobileView={true} />}
+      <div className="absolute right-5 sm:hidden">
+        <MenuIcon setIsMenuOpen={setIsMenuOpen} />
+      </div>
+      {!isMenuOpen && (
+        <div className="relative top-1/3 lg:mx-12 mx-4">
+          <h3 className="min-[1000px]:text-8xl min-[700px]:text-7xl min-[500px]:text-5xl text-3xl font-bold">
+            Hello,
+          </h3>
+          <h1 className="min-[1000px]:text-8xl min-[700px]:text-7xl min-[500px]:text-5xl text-3xl pt-4 font-bold">
+            I'm {props.name}
+            <span>.</span>
+          </h1>
+          <h5 className="sm:text-2xl text-md font-extralight sm:pt-4 pt-10 lowercase">
+            {props.title}
+          </h5>
         </div>
-      </div>
-      <div className="float-right sm:hidden">
-        {/* <input
-          type="checkbox"
-          className="peer absolute h-[30px] w-[30px] opacity-0"
-          id="menuIcon"
-        />
-        <label htmlFor="menuIcon" className="peer-checked:bg-yellow-400">
-          <span className="">
-            <FontAwesomeIcon icon="bars" className="h-[20px] w-[20px]" />
-          </span>
-        </label> */}
-        <MenuIcon />
-      </div>
-      <div className="relative top-1/3 lg:mx-12 mx-4">
-        <h3 className="min-[1000px]:text-8xl min-[700px]:text-7xl min-[500px]:text-5xl text-3xl font-bold">
-          Hello,
-        </h3>
-        <h1 className="min-[1000px]:text-8xl min-[700px]:text-7xl min-[500px]:text-5xl text-3xl pt-4 font-bold">
-          I'm {props.name}
-          <span>.</span>
-        </h1>
-        <h5 className="sm:text-2xl text-md font-extralight sm:pt-4 pt-10 lowercase">
-          {props.title}
-        </h5>
-      </div>
+      )}
     </div>
   );
 };
