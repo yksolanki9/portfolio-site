@@ -14,7 +14,7 @@ export const MenuIcon = ({
         id="menu-toggle"
         className="peer"
         checked={isMenuOpen}
-        onClick={() => setIsMenuOpen((prev: boolean) => !prev)}
+        onChange={() => setIsMenuOpen((prev: boolean) => !prev)}
       />
       <label htmlFor="menu-toggle">
         <div className="icon-container">
