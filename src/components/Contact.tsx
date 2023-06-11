@@ -15,40 +15,40 @@ export const Contact = ({ urls }: any) => {
       <div id="contact" className="text-md sm:text-xl pb-4 text-thin">
         Feel free to reach out to me on
       </div>
-      <div>
+      <div className="flex justify-center items-center h-[60px] mt-4">
         <a href={urls.GMAIL} target="_blank">
           <FontAwesomeIcon
-            className="p-4 min-[450px]:p-6 text-xl min-[450px]:text-2xl cursor-pointer"
+            className="p-4 min-[450px]:p-6 text-xl hover:text-5xl transition-all duration-500 min-[450px]:text-2xl cursor-pointer"
             icon={faEnvelope}
           />
         </a>
         <a href={urls.LINKEDIN} target="_blank">
           <FontAwesomeIcon
-            className="p-4 min-[450px]:p-6 text-xl min-[450px]:text-2xl cursor-pointer"
+            className="p-4 min-[450px]:p-6 text-xl hover:text-5xl transition-all duration-500 min-[450px]:text-2xl cursor-pointer"
             icon={faLinkedinIn}
           />
         </a>
         <a href={urls.GITHUB} target="_blank">
           <FontAwesomeIcon
-            className="p-4 min-[450px]:p-6 text-xl min-[450px]:text-2xl cursor-pointer"
+            className="p-4 min-[450px]:p-6 text-xl hover:text-5xl transition-all duration-500 min-[450px]:text-2xl cursor-pointer"
             icon={faGithub}
           />
         </a>
         <a href={urls.TWITTER} target="_blank">
           <FontAwesomeIcon
-            className="p-4 min-[450px]:p-6 text-xl min-[450px]:text-2xl cursor-pointer"
+            className="p-4 min-[450px]:p-6 text-xl hover:text-5xl transition-all duration-500 min-[450px]:text-2xl cursor-pointer"
             icon={faTwitter}
           />
         </a>
         <a href={urls.INSTAGRAM} target="_blank">
           <FontAwesomeIcon
-            className="p-4 min-[450px]:p-6 text-xl min-[450px]:text-2xl cursor-pointer"
+            className="p-4 min-[450px]:p-6 text-xl hover:text-5xl transition-all duration-500 min-[450px]:text-2xl cursor-pointer"
             icon={faInstagram}
           />
         </a>
         <a href={urls.DEV} target="_blank">
           <FontAwesomeIcon
-            className="p-4 min-[450px]:p-6 text-xl min-[450px]:text-2xl cursor-pointer"
+            className="p-4 min-[450px]:p-6 text-xl hover:text-5xl transition-all duration-500 min-[450px]:text-2xl cursor-pointer"
             icon={faDev}
           />{" "}
         </a>

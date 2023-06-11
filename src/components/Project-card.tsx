@@ -8,10 +8,10 @@ export const ProjectCard = ({ project }) => {
   const { title, description, badges, redirections } = project;
   return (
     <a className="w-full" href={redirections.githubUrl} target={"_blank"}>
-      <div className="p-4 m-2 border border-white border-opacity-25 rounded-lg flex flex-col min-h-full">
+      <div className="group p-4 m-2 border border-white border-opacity-25 rounded-lg flex flex-col min-h-full transition-all duration-300 hover:shadow-md hover:shadow-slate-200 hover:scale-105">
         <div className="flex justify-between">
           <div>{title}</div>
-          <div>
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <FontAwesomeIcon icon="arrow-up-right-from-square" />
           </div>
         </div>

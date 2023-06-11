@@ -17,7 +17,7 @@ export const Experience = (props: any) => {
                 key={index}
               >
                 <div className="date">{exp.period}</div>
-                <div className="content">
+                <div className="content transition-all duration-300 hover:scale-110">
                   <div>{exp.title}</div>
                   <div className="subtitle">{exp.description}</div>
                 </div>
