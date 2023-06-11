@@ -22,10 +22,10 @@ export const Home = (props: any) => {
       )}
       {!isMenuOpen && (
         <div className="relative top-1/3 lg:mx-12 mx-4">
-          <h3 className="min-[1000px]:text-8xl min-[700px]:text-7xl min-[500px]:text-5xl text-3xl font-bold">
+          <h3 className="min-[1000px]:text-8xl min-[700px]:text-7xl text-5xl font-medium">
             Hello,
           </h3>
-          <h1 className="min-[1000px]:text-8xl min-[700px]:text-7xl min-[500px]:text-5xl text-3xl pt-4 font-bold">
+          <h1 className="min-[1000px]:text-8xl min-[700px]:text-7xl text-5xl leading-tight pt-4 font-bold">
             I'm {props.name}
             <span>.</span>
           </h1>
