@@ -2,13 +2,28 @@
 import * as React from "react";
 import { badgeUrlMapping } from "../utils/badge-url-mapping";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useInView } from "react-intersection-observer";
 import "../utils/fontawesome";
 
-export const ProjectCard = ({ project }) => {
+export const ProjectCard = ({ id, project, rootRef }) => {
   const { title, description, badges, redirections } = project;
+  const { inView, ref } = useInView({
+    threshold: 1,
+    triggerOnce: true,
+    root: rootRef?.current,
+  });
   return (
-    <a className="w-full" href={redirections.githubUrl} target={"_blank"}>
-      <div className="group p-4 m-2 border border-white border-opacity-25 rounded-lg flex flex-col min-h-full transition-all duration-300 hover:shadow-md hover:shadow-slate-200 hover:scale-105">
+    <a
+      ref={ref}
+      className="w-full"
+      href={redirections.githubUrl}
+      target={"_blank"}
+    >
+      <div
+        className={`group p-4 m-2 border border-white border-opacity-25 rounded-lg flex flex-col min-h-full transition-all duration-500 hover:shadow-md hover:shadow-slate-200 hover:scale-105 ${
+          id % 2 !== 0 ? "translate-x-full" : "-translate-x-full"
+        } ${inView ? "opacity-100 !translate-x-0" : "opacity-0"}`}
+      >
         <div className="flex justify-between">
           <div>{title}</div>
           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
