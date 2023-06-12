@@ -3,7 +3,23 @@
 }
 
 .navbar > div {
-  @apply px-6 scale-100 [transition:transform_0.3s] hover:scale-125;
+  @apply mx-6 scale-100 [transition:transform_0.3s] hover:scale-125;
+}
+
+.navbar > div > a {
+  @apply bg-gradient-cta bg-[length:200%_100%] bg-[-100%] bg-clip-text [-webkit-text-fill-color:transparent] transition-all ease-in-out duration-300;
+}
+
+.navbar > div > a:hover {
+  @apply bg-[0%]
+}
+
+.navbar > div > a:before {
+  @apply [content:''] bg-custom-cyan block absolute bottom-[-3px] left-0 w-0 h-[1px] transition-all ease-in-out duration-300;
+}
+
+.navbar > div > a:hover::before {
+  @apply w-full;
 }
 
 .show-navbar {

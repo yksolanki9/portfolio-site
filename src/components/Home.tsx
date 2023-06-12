@@ -27,7 +27,7 @@ export const Home = (props: any) => {
           </h3>
           <h1 className="min-[1000px]:text-8xl min-[700px]:text-7xl text-5xl leading-tight pt-4 font-bold">
             I'm {props.name}
-            <span>.</span>
+            <span className="text-custom-cyan animate-color">.</span>
           </h1>
           <h5 className="sm:text-2xl text-md font-extralight sm:pt-4 pt-10 lowercase">
             {props.title}
