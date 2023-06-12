@@ -19,7 +19,7 @@ module.exports = {
         "zoom-in-out": "zoom-in-out 1s ease-in-out 0.1s 2 alternate",
         color: "color 8s ease-in-out infinite",
         typing:
-          "typing 1s steps(20, end) 3s, blink-caret 0.5s step-end 1s infinite",
+          "typing 1s steps(20, end) 3.5s, blink-caret 0.5s step-end 1s infinite",
         opacity: "opacity 2s ease-out 1s 1",
       },
       backgroundImage: {

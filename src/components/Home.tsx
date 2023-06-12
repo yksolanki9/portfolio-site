@@ -46,7 +46,7 @@ export const Home = (props: any) => {
             I'm {props.name}
             <span className="text-custom-cyan animate-color">.</span>
           </h1>
-          <div className={`inline-block sm:text-2xl text-md font-extralight sm:mt-4 mt-10 lowercase transition-opacity delay-[3000ms] ${inView ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`inline-block sm:text-2xl text-md font-extralight sm:mt-4 mt-10 lowercase transition-opacity delay-[3500ms] ${inView ? 'opacity-100' : 'opacity-0'}`}>
             <h5 className="inline-block pr-[6px] overflow-hidden whitespace-nowrap border-r-[2px] border-custom-cyan animate-typing">
               {props.title}
             </h5>
