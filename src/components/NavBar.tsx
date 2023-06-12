@@ -1,9 +1,25 @@
-import * as React from 'react';
-import * as styles from '../styles/NavBar.module.css';
+import * as React from "react";
+import * as styles from "../styles/NavBar.module.css";
+import { useInView } from "react-intersection-observer";
 
-export const NavBar = ({isMobileView, setIsMenuOpen}: {isMobileView: boolean, setIsMenuOpen: Function}) => {
+export const NavBar = ({
+  isMobileView,
+  setIsMenuOpen,
+}: {
+  isMobileView: boolean;
+  setIsMenuOpen: Function;
+}) => {
+  const { inView, ref } = useInView({
+    threshold: 1,
+    triggerOnce: true,
+  });
   return (
-    <div className={isMobileView ? styles.sidebar : styles.navbar}>
+    <div
+      ref={ref}
+      className={`${isMobileView ? styles.sidebar : styles.navbar} ${
+        isMobileView && inView ? styles.showSidebar : styles.hideSidebar
+      } ${!isMobileView && inView ? styles.showNavbar : styles.hideNavbar}`}
+    >
       <div onClick={() => setIsMenuOpen(false)}>
         <a href="#about">About</a>
       </div>
@@ -26,4 +42,4 @@ export const NavBar = ({isMobileView, setIsMenuOpen}: {isMobileView: boolean, se
       </div>
     </div>
   );
-}
+};

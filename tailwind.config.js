@@ -18,6 +18,11 @@ module.exports = {
           "50%": { transform: "scale(1.25)" },
         },
       },
+      transitionDelay: {
+        50: "50",
+        150: "150ms",
+        250: "250ms",
+      },
     },
   },
   plugins: [],

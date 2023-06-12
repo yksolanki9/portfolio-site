@@ -26,7 +26,7 @@ export const Experience = (props: any) => {
                 key={index}
               >
                 <div
-                  className={`date transition-all duration-1000 ${
+                  className={`date transition-all duration-1000 delay-200 ease-in ${
                     inView ? "opacity-100" : "opacity-0"
                   }`}
                 >

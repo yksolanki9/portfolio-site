@@ -17,7 +17,7 @@ export const About = (props: any) => {
     >
       <div className="flex md:flex-row flex-col justify-center h-full items-center pb-10">
         <div
-          className={`xl:basis-3/12 lg:basis-4/12 basis-5/12 pt-20 md:pt-0 transition-all duration-1000 ease-out ${
+          className={`xl:basis-3/12 lg:basis-4/12 basis-5/12 pt-20 md:pt-0 transition-all delay-200 duration-1000 ease-in ${
             inView ? "opacity-100" : "opacity-0"
           }`}
         >

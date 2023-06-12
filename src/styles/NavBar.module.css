@@ -1,9 +1,13 @@
 .navbar {
-  @apply flex float-right;
+  @apply flex float-right -translate-y-full opacity-0 transition-all ease-in-out duration-700;
 }
 
 .navbar > div {
-  @apply px-6;
+  @apply px-6 scale-100 [transition:transform_0.3s] hover:scale-125;
+}
+
+.show-navbar {
+  @apply translate-y-0 opacity-100;
 }
 
 .sidebar {
@@ -11,5 +15,28 @@
 }
 
 .sidebar > div {
-  @apply px-6 text-3xl font-light py-6;
+  @apply px-6 text-3xl font-light py-6 transition-all duration-300 translate-x-full opacity-0;
+}
+
+.show-sidebar > div {
+  @apply translate-x-0 opacity-100;
+}
+
+.show-sidebar > div:nth-child(1) {
+  @apply delay-50;
+}
+
+.show-sidebar > div:nth-child(2) {
+  @apply delay-100;
+}
+
+.show-sidebar > div:nth-child(3) {
+  @apply delay-150;
+}
+
+.show-sidebar > div:nth-child(4) {
+  @apply delay-200;
+}
+.show-sidebar > div:nth-child(5) {
+  @apply delay-250;
 }
