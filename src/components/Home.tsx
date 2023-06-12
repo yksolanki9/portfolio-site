@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 export const Home = (props: any) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { inView, ref } = useInView({
-    threshold: 1,
+    threshold: 0.5,
     triggerOnce: true,
   });
   return (
