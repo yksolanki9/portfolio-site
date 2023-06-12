@@ -9,15 +9,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "500px",
+      },
       colors: {
         "custom-cyan": "#00DDFF",
       },
       animation: {
         "zoom-in-out": "zoom-in-out 1s ease-in-out 0.1s 2 alternate",
         color: "color 8s ease-in-out infinite",
+        typing: "typing 1s steps(20, end) 3s, blink-caret 0.5s step-end 1s infinite",
+        opacity: "opacity 2s ease-out 1s 1",
       },
       backgroundImage: {
-        "gradient-cta": "linear-gradient(to right, #00DDFF, #00DDFF 50%, #fff 50%)",
+        "gradient-cta":
+          "linear-gradient(to right, #00DDFF, #00DDFF 50%, #fff 50%)",
       },
       keyframes: {
         "zoom-in-out": {
@@ -31,6 +37,18 @@ module.exports = {
           "75%": { color: "#FFFA00" },
           "100%": { color: "#00DDFF" },
         },
+        typing: {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
+        },
+        "blink-caret": {
+          "from, to": { "border-color": "transparent" },
+          "50%": { "border-color": "#00DDFF" },
+        },
+        opacity: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        }
       },
       transitionDelay: {
         50: "50",
