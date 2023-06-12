@@ -18,7 +18,8 @@ module.exports = {
       animation: {
         "zoom-in-out": "zoom-in-out 1s ease-in-out 0.1s 2 alternate",
         color: "color 8s ease-in-out infinite",
-        typing: "typing 1s steps(20, end) 3s, blink-caret 0.5s step-end 1s infinite",
+        typing:
+          "typing 1s steps(20, end) 3s, blink-caret 0.5s step-end 1s infinite",
         opacity: "opacity 2s ease-out 1s 1",
       },
       backgroundImage: {
@@ -33,8 +34,8 @@ module.exports = {
         color: {
           "0%": { color: "#00DDFF" },
           "25%": { color: "#FF00E4" },
-          "50%": { color: "#FF1900" },
-          "75%": { color: "#FFFA00" },
+          "50%": { color: "#FFFA00" },
+          "75%": { color: "#FF1900" },
           "100%": { color: "#00DDFF" },
         },
         typing: {
@@ -48,7 +49,7 @@ module.exports = {
         opacity: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
-        }
+        },
       },
       transitionDelay: {
         50: "50",
