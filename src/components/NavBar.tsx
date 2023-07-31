@@ -31,7 +31,7 @@ export const NavBar = ({
       </div>
       <div onClick={() => setIsMenuOpen(false)}>
         <a
-          href="https://drive.google.com/file/d/1bqvbs_oy0wBS5U0bQCVIFKId4Gqhp-UA/view?usp=sharing"
+          href="https://drive.google.com/file/d/1l4uC4A6XIXr7sYKiyzAinMt_gSI8ix1c/view?usp=sharing"
           target="_blank"
         >
           Resume
