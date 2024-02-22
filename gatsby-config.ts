@@ -34,6 +34,23 @@ const config: GatsbyConfig = {
         icon: "src/images/favicon.png",
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-YX71PYVT2P"],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
+          origin: "YOUR_SELF_HOSTED_ORIGIN",
+          delayOnRouteUpdate: 0,
+        },
+      },
+    },
   ],
 };
 
