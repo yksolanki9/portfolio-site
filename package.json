@@ -17,29 +17,29 @@
     "deploy": "gatsby build && gh-pages -d public -b main --repo https://github.com/yksolanki9/yksolanki9.github.io.git"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.3.0",
-    "@fortawesome/free-brands-svg-icons": "^6.3.0",
-    "@fortawesome/free-regular-svg-icons": "^6.3.0",
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "gatsby": "^5.7.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "gatsby": "^5.14.4",
     "gatsby-omni-font-loader": "^2.0.2",
-    "gatsby-plugin-google-gtag": "^5.13.1",
-    "gatsby-plugin-manifest": "^5.10.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "gatsby-plugin-google-gtag": "^5.14.0",
+    "gatsby-plugin-manifest": "^5.14.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
-    "react-intersection-observer": "^9.4.4"
+    "react-intersection-observer": "^9.16.0"
   },
   "devDependencies": {
-    "@types/node": "^18.14.0",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "autoprefixer": "^10.4.13",
-    "gatsby-plugin-postcss": "^6.7.0",
-    "gh-pages": "^5.0.0",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.7",
-    "typescript": "^4.9.5"
+    "@types/node": "^22.15.30",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.21",
+    "gatsby-plugin-postcss": "^6.14.0",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
   }
 }
