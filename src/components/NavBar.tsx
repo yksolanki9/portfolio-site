@@ -141,15 +141,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
         className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-lg"
         onClick={handleBackdropClick}
       >
-        <div className="glass-card rounded-3xl p-8 max-w-sm w-full mx-4 transform animate-slide-up">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-glow bg-gradient-to-r from-custom-cyan to-neon-purple bg-clip-text text-transparent">
-              Navigation
-            </h3>
-            <div className="w-16 h-[2px] bg-gradient-cyan mx-auto mt-2"></div>
-          </div>
-
+        <div className="glass-card rounded-3xl p-6 max-w-sm w-full mx-4 transform animate-slide-up">
           {/* Mobile Menu Items */}
           <nav className="space-y-4">
             {navItems.map((item, index) => {
@@ -162,10 +154,10 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                   onClick={() => handleNavClick(item.href, item.external)}
                   className={`w-full group relative p-4 rounded-xl text-left transition-all duration-300 transform hover:scale-105 ${
                     isActive
-                      ? "bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20 text-white border border-custom-cyan/50"
+                      ? "bg-gradient-to-r from-custom-cyan/30 to-neon-purple/30 text-white border-2 border-custom-cyan shadow-lg shadow-custom-cyan/20"
                       : isResume
-                      ? "bg-gradient-to-r from-neon-purple/30 to-neon-pink/30 text-white border border-neon-purple/60 shadow-lg shadow-neon-purple/30 animate-pulse-glow"
-                      : "text-gray-300 hover:text-white hover:bg-glass-white"
+                      ? "bg-transparent text-gray-300 hover:text-white border border-transparent hover:bg-glass-white/10"
+                      : "text-gray-300 hover:text-white hover:bg-glass-white border border-transparent hover:border-gray-600"
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
@@ -189,29 +181,24 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                     <div
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         isActive
-                          ? "bg-custom-cyan animate-pulse"
+                          ? "bg-custom-cyan animate-pulse shadow-sm shadow-custom-cyan"
                           : isResume
-                          ? "bg-neon-pink animate-ping shadow-lg shadow-neon-pink/50"
+                          ? "bg-gray-500 group-hover:bg-gray-400"
                           : "bg-gray-600 group-hover:bg-neon-purple"
                       }`}
                     />
                   </div>
 
-                  {/* Enhanced animated underline for resume */}
+                  {/* Enhanced animated underline */}
                   <div
                     className={`absolute bottom-0 left-4 right-4 h-[2px] transition-all duration-300 ${
                       isActive
-                        ? "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-100"
+                        ? "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-100 shadow-sm shadow-custom-cyan/50"
                         : isResume
-                        ? "bg-gradient-to-r from-neon-purple via-neon-pink to-neon-orange opacity-100 animate-pulse shadow-sm shadow-neon-orange/50"
+                        ? "bg-gradient-to-r from-gray-500 to-gray-400 opacity-0 group-hover:opacity-50"
                         : "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-0 group-hover:opacity-50"
                     }`}
                   />
-
-                  {/* Special glow effect for resume */}
-                  {isResume && (
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-purple/15 to-neon-pink/15 animate-pulse" />
-                  )}
                 </button>
               );
             })}
