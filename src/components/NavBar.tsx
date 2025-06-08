@@ -12,7 +12,7 @@ const navItems = [
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
   {
-    href: "https://drive.google.com/file/d/1l4uC4A6XIXr7sYKiyzAinMt_gSI8ix1c/view?usp=sharing",
+    href: "https://drive.google.com/file/d/1GXViaLTnM_Wn_mPRUd2WRrX1LpAH3ABv/view?usp=drive_link",
     label: "Resume",
     external: true,
   },
@@ -178,17 +178,11 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                       {item.label}
                       {isResume && (
                         <svg
-                          className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink"
-                          fill="none"
-                          stroke="currentColor"
+                          className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink flex-shrink-0"
+                          fill="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          />
+                          <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z" />
                         </svg>
                       )}
                     </span>
@@ -244,51 +238,52 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
               <li key={item.href}>
                 <button
                   onClick={() => handleNavClick(item.href, item.external)}
-                  className={`group relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-110 ${
+                  className={`group relative transition-all duration-300 hover:scale-110 ${
                     isActive
-                      ? "text-custom-cyan text-glow"
+                      ? "px-4 py-2 text-sm font-medium text-custom-cyan text-glow"
                       : isResume
-                      ? "text-neon-purple hover:text-neon-pink animate-pulse-glow font-bold"
-                      : "text-gray-300 hover:text-white"
+                      ? "px-6 py-2.5 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-bold rounded-full shadow-lg shadow-neon-purple/30 hover:shadow-neon-pink/40 hover:from-neon-pink hover:to-neon-orange transform hover:scale-105"
+                      : "px-4 py-2 text-sm font-medium text-gray-300 hover:text-white"
                   }`}
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  {item.label}
-                  {isResume && (
-                    <svg
-                      className="inline w-3 h-3 ml-1 animate-bounce"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
+                  <div
+                    className={`${
+                      isResume ? "flex items-center justify-center" : ""
+                    }`}
+                  >
+                    {item.label}
+                    {isResume && (
+                      <svg
+                        className="w-4 h-4 ml-2 animate-bounce flex-shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z" />
+                      </svg>
+                    )}
+                  </div>
+
+                  {/* Active indicator - only for non-resume items */}
+                  {!isResume && (
+                    <div
+                      className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full transition-all duration-300 ${
+                        isActive
+                          ? "bg-custom-cyan animate-pulse"
+                          : "bg-transparent group-hover:bg-neon-purple"
+                      }`}
+                    />
                   )}
 
-                  {/* Active indicator */}
-                  <div
-                    className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full transition-all duration-300 ${
-                      isActive
-                        ? "bg-custom-cyan animate-pulse"
-                        : isResume
-                        ? "bg-neon-purple animate-ping"
-                        : "bg-transparent group-hover:bg-neon-purple"
-                    }`}
-                  />
+                  {/* Hover effect for navigation items - not resume */}
+                  {!isResume && (
+                    <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20" />
+                  )}
 
-                  {/* Enhanced hover effect for resume - removed rectangular background */}
-                  <div
-                    className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 ${
-                      isResume
-                        ? "bg-transparent"
-                        : "bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20"
-                    }`}
-                  />
+                  {/* Enhanced glow effect for resume button */}
+                  {isResume && (
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 animate-pulse" />
+                  )}
                 </button>
               </li>
             );
