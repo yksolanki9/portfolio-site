@@ -37,7 +37,27 @@ export const About = ({ about }: AboutProps) => {
         <div className="absolute top-1/2 right-10 w-16 h-16 bg-gradient-purple rounded-full opacity-50 animate-float" />
       </div>
 
-      <div className="flex md:flex-row flex-col justify-center items-center min-h-screen relative z-10">
+      {/* Section Header - matching Projects and Journey style */}
+      <div
+        className={`text-center mb-16 transition-all duration-1000 ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <div className="flex items-center justify-center gap-6 mb-6">
+          <div className="w-16 h-[2px] bg-gradient-cyan"></div>
+          <h2 className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
+            About Me
+          </h2>
+          <div className="w-16 h-[2px] bg-gradient-purple"></div>
+        </div>
+
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          Passionate full-stack developer with 4+ years of experience building
+          scalable applications and innovative solutions.
+        </p>
+      </div>
+
+      <div className="flex md:flex-row flex-col justify-center items-center relative z-10">
         {/* Profile Image Section with Optimized Animations */}
         <div
           className={`xl:basis-3/12 lg:basis-4/12 basis-5/12 pt-20 md:pt-0 transition-all duration-700 ease-out ${
@@ -117,31 +137,6 @@ export const About = ({ about }: AboutProps) => {
           style={{ transitionDelay: "400ms" }}
         >
           <div className="relative">
-            {/* Section Title with simplified animation */}
-            <div
-              className={`flex items-center gap-4 mb-8 transition-all duration-600 ${
-                inView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 -translate-y-2"
-              }`}
-              style={{ transitionDelay: "500ms" }}
-            >
-              <div
-                className={`h-[2px] bg-gradient-cyan transition-all duration-700 ${
-                  inView ? "w-12" : "w-0"
-                }`}
-              />
-              <h2 className="text-2xl md:text-3xl font-bold text-glow">
-                About Me
-              </h2>
-              <div
-                className={`h-[2px] bg-gradient-purple transition-all duration-700 ${
-                  inView ? "w-12" : "w-0"
-                }`}
-                style={{ transitionDelay: "100ms" }}
-              />
-            </div>
-
             {/* Glass Card with simplified reveal animation */}
             <div
               className={`glass-card rounded-2xl p-6 md:p-8 hover-tilt group transition-all duration-600 ${
