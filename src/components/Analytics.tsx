@@ -5,7 +5,7 @@ interface AnalyticsProps {
 }
 
 export const Analytics: React.FC<AnalyticsProps> = ({
-  trackingId = "G-XXXXXXXXXX",
+  trackingId = "G-YX71PYVT2P",
 }) => {
   React.useEffect(() => {
     // Google Analytics 4
