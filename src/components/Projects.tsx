@@ -172,19 +172,6 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
           </div>
         </div>
       )}
-
-      {/* Scroll Indicator */}
-      <div
-        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1500 ${
-          inView ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="flex items-center gap-2 text-gray-400">
-          <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-custom-cyan"></div>
-          <span className="text-sm">Next: Contact</span>
-          <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-custom-cyan"></div>
-        </div>
-      </div>
     </div>
   );
 };

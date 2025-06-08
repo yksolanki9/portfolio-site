@@ -5,6 +5,8 @@ interface WorkExperience {
   period: string;
   title: string;
   description: string;
+  tag?: string;
+  url: string;
 }
 
 interface ExperienceProps {
@@ -244,19 +246,6 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Section Transition */}
-      <div
-        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-1500 ${
-          inView ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="flex items-center gap-2 text-gray-400">
-          <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-neon-purple"></div>
-          <span className="text-sm">Next: Projects</span>
-          <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-neon-purple"></div>
         </div>
       </div>
     </div>

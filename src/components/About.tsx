@@ -246,29 +246,6 @@ export const About = ({ about }: AboutProps) => {
           </div>
         </div>
       </div>
-
-      {/* Section Transition Indicator with simplified reveal */}
-      <div
-        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-700 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-        }`}
-        style={{ transitionDelay: "1600ms" }}
-      >
-        <div className="flex items-center gap-2 text-gray-400">
-          <div
-            className={`h-[1px] bg-gradient-to-r from-transparent to-custom-cyan transition-all duration-500 ${
-              inView ? "w-8" : "w-0"
-            }`}
-          />
-          <span className="text-sm">Next: Experience</span>
-          <div
-            className={`h-[1px] bg-gradient-to-l from-transparent to-custom-cyan transition-all duration-500 ${
-              inView ? "w-8" : "w-0"
-            }`}
-            style={{ transitionDelay: "100ms" }}
-          />
-        </div>
-      </div>
     </div>
   );
 };

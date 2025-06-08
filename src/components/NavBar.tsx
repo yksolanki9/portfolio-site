@@ -17,10 +17,7 @@ const navItems = [
   },
 ];
 
-export const NavBar: React.FC<NavBarProps> = ({
-  isMobileView,
-  setIsMenuOpen,
-}) => {
+export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
   const [activeSection, setActiveSection] = React.useState<string>("");
 
   React.useEffect(() => {
@@ -41,23 +38,46 @@ export const NavBar: React.FC<NavBarProps> = ({
             scrollPosition < offsetTop + offsetHeight
           ) {
             setActiveSection(section);
+            if (window.location.hash !== `#${section}`) {
+              window.history.replaceState(null, "", `#${section}`);
+            }
             break;
           }
         }
       }
     };
 
+    const hash = window.location.hash.substring(1);
+    if (hash && navItems.some((item) => item.href === `#${hash}`)) {
+      setActiveSection(hash);
+    }
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  React.useEffect(() => {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      const element = document.getElementById(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
   }, []);
 
   const handleNavClick = (href: string, external?: boolean) => {
     if (external) {
       window.open(href, "_blank");
     } else {
+      window.history.pushState(null, "", href);
+
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(href.substring(1));
       }
     }
     if (isMobileView) {
