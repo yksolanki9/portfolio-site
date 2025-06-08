@@ -234,8 +234,14 @@ export const Head: HeadFC = () => (
     <meta name="revisit-after" content="7 days" />
 
     {/* Custom Favicon */}
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-new.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32-new.png"
+    />
+    <link rel="icon" href="/favicon-new.ico" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
