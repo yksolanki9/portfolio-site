@@ -189,6 +189,16 @@ export const Head: HeadFC = () => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#00DDFF" />
 
+    {/* Custom Favicon */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/icon-192x192.png"
+    />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
     {/* Open Graph tags */}
     <meta property="og:title" content="Yash Solanki - Full Stack Developer" />
     <meta
@@ -196,6 +206,9 @@ export const Head: HeadFC = () => (
       content="Modern portfolio showcasing 4+ years of full-stack development expertise"
     />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="/icons/icon-512x512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
 
     {/* Twitter Card tags */}
     <meta name="twitter:card" content="summary_large_image" />
@@ -204,6 +217,7 @@ export const Head: HeadFC = () => (
       name="twitter:description"
       content="Modern portfolio showcasing 4+ years of full-stack development expertise"
     />
+    <meta name="twitter:image" content="/icons/icon-512x512.png" />
 
     {/* Performance optimizations */}
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
