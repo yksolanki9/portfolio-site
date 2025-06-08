@@ -27,6 +27,7 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
   return (
     <div
+      id="projects"
       ref={ref}
       className="relative 2xl:pt-64 mt-20 py-40 px-2 lg:px-16 project-section overflow-hidden"
     >
@@ -45,10 +46,7 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
       >
         <div className="flex items-center justify-center gap-6 mb-6">
           <div className="w-16 h-[2px] bg-gradient-cyan"></div>
-          <h2
-            id="projects"
-            className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent"
-          >
+          <h2 className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
             Projects
           </h2>
           <div className="w-16 h-[2px] bg-gradient-purple"></div>
@@ -98,14 +96,14 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         ))}
       </div>
 
-      {/* Featured Project Highlight */}
+      {/* Enhanced Featured Project Highlight */}
       {projects.length > 0 && (
         <div
           className={`mt-20 text-center transition-all duration-1000 delay-1000 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="glass-card rounded-2xl p-8 max-w-4xl mx-auto">
+          <div className="glass-card rounded-3xl p-8 max-w-4xl mx-auto group hover-tilt">
             <h3 className="text-2xl font-bold mb-4 text-custom-cyan">
               Featured Project
             </h3>
@@ -113,16 +111,41 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
               <strong className="text-white">{projects[0].title}</strong> -{" "}
               {projects[0].description}
             </div>
-            <div className="flex flex-wrap justify-center gap-3">
+
+            {/* Modern Tech Stack Cards */}
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
               {projects[0].badges.map((badge, index) => (
-                <span
+                <div
                   key={index}
-                  className="px-4 py-2 bg-gradient-to-r from-glass-white to-glass-dark rounded-full text-sm border border-gray-600 hover:border-custom-cyan transition-all duration-300 hover:scale-105 neon-glow"
+                  className="group/badge relative overflow-hidden"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {badge}
-                </span>
+                  {/* Main Badge */}
+                  <div className="relative px-6 py-3 bg-gradient-to-r from-dark-700 to-dark-600 rounded-xl border border-gray-600 transition-all duration-500 transform hover:scale-110 hover:border-custom-cyan cursor-pointer">
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-custom-cyan/10 to-neon-purple/10 rounded-xl opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500" />
+
+                    {/* Animated Border */}
+                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500">
+                      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink opacity-20 animate-pulse" />
+                    </div>
+
+                    {/* Text */}
+                    <span className="relative z-10 text-sm font-semibold text-gray-300 group-hover/badge:text-white transition-colors duration-300">
+                      {badge}
+                    </span>
+
+                    {/* Floating Particles */}
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-custom-cyan rounded-full opacity-0 group-hover/badge:opacity-100 group-hover/badge:animate-ping transition-opacity duration-300" />
+                    <div className="absolute -bottom-1 -left-1 w-1 h-1 bg-neon-purple rounded-full opacity-0 group-hover/badge:opacity-100 group-hover/badge:animate-pulse transition-opacity duration-300" />
+                  </div>
+
+                  {/* Reflection Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-transparent rounded-xl opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                </div>
               ))}
             </div>
+
             <div className="mt-6">
               <a
                 href={projects[0].redirections.githubUrl}
@@ -158,7 +181,7 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
       >
         <div className="flex items-center gap-2 text-gray-400">
           <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-custom-cyan"></div>
-          <span className="text-sm">Next: Experience</span>
+          <span className="text-sm">Next: Contact</span>
           <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-custom-cyan"></div>
         </div>
       </div>
