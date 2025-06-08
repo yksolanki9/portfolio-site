@@ -2,4 +2,4 @@ export const about = `I'm a Senior Full Stack Developer based in Mumbai, India, 
 
 export const name = "Yash Solanki";
 
-export const title = "SeniorFull Stack Developer";
+export const title = "Senior Full Stack Developer";
