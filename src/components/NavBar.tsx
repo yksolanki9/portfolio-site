@@ -6,6 +6,7 @@ interface NavBarProps {
 }
 
 const navItems = [
+  { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#journey", label: "Journey" },
   { href: "#projects", label: "Projects" },
@@ -21,63 +22,106 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
   const [activeSection, setActiveSection] = React.useState<string>("");
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      const sections = navItems
-        .filter((item) => !item.external)
-        .map((item) => item.href.substring(1));
-      const scrollPosition = window.scrollY + 100;
+    const sections = navItems
+      .filter((item) => !item.external)
+      .map((item) => item.href.substring(1));
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-            if (window.location.hash !== `#${section}`) {
-              window.history.replaceState(null, "", `#${section}`);
-            }
-            break;
-          }
-        }
-      }
+    // Set up Intersection Observer for better performance
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px", // Trigger when section is in the middle portion of viewport
+      threshold: 0,
     };
 
+    let currentIntersections = new Map<string, boolean>();
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        currentIntersections.set(entry.target.id, entry.isIntersecting);
+      });
+
+      // Find the first intersecting section in order
+      let newActiveSection = "";
+      for (const section of sections) {
+        if (currentIntersections.get(section)) {
+          newActiveSection = section;
+          break;
+        }
+      }
+
+      // Update active section and URL using callback to avoid stale closure
+      setActiveSection((currentActive) => {
+        if (newActiveSection !== currentActive) {
+          if (newActiveSection === "home") {
+            // When home section is active, clear the URL fragment
+            if (window.location.hash) {
+              window.history.replaceState(null, "", window.location.pathname);
+            }
+          } else if (newActiveSection) {
+            // Update URL fragment for other sections
+            if (window.location.hash !== `#${newActiveSection}`) {
+              window.history.replaceState(null, "", `#${newActiveSection}`);
+            }
+          }
+          return newActiveSection;
+        }
+        return currentActive;
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    // Observe all sections
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) {
+        observer.observe(element);
+        currentIntersections.set(section, false);
+      }
+    });
+
+    // Handle initial hash on page load
     const hash = window.location.hash.substring(1);
     if (hash && navItems.some((item) => item.href === `#${hash}`)) {
       setActiveSection(hash);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  React.useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      const element = document.getElementById(hash);
-      if (element) {
-        setTimeout(() => {
+      // Scroll to the section after a brief delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
           element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      }
+        }
+      }, 100);
+    } else {
+      // If no hash, start with home as active
+      setActiveSection("home");
     }
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const handleNavClick = (href: string, external?: boolean) => {
     if (external) {
       window.open(href, "_blank");
     } else {
-      window.history.pushState(null, "", href);
+      const section = href.substring(1);
+
+      if (section === "home") {
+        // For home section, use root URL
+        window.history.pushState(null, "", window.location.pathname);
+      } else {
+        // For other sections, use fragment
+        window.history.pushState(null, "", href);
+      }
 
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
-        setActiveSection(href.substring(1));
+        setActiveSection(section);
       }
     }
     if (isMobileView) {

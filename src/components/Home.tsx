@@ -41,6 +41,7 @@ export const Home = (props: HomeProps) => {
 
   return (
     <div
+      id="home"
       ref={ref}
       className={`relative pt-12 min-[1100px]:px-16 md:px-8 px-4 min-h-screen bg-gradient-dark overflow-hidden ${
         isMenuOpen ? "touch-none" : ""
