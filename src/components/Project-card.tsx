@@ -87,32 +87,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </p>
         </div>
 
-        {/* Enhanced Tech Stack Badges */}
+        {/* Tech Stack Badges */}
         <div className="mb-6">
           <h4 className="text-sm font-semibold text-custom-cyan mb-3">
             Tech Stack
           </h4>
           <div className="flex flex-wrap gap-2">
             {badges.map((badge, index) => (
-              <div
+              <span
                 key={index}
-                className="group/tech relative overflow-hidden"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="px-3 py-1 bg-gradient-to-r from-glass-white to-glass-dark rounded-full text-xs border border-gray-600 hover:border-custom-cyan transition-all duration-300 neon-glow"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* Main Badge Container */}
-                <div className="relative px-3 py-1.5 bg-gradient-to-r from-gray-800/80 to-gray-700/80 rounded-lg border border-gray-600/50 transition-all duration-300 transform hover:scale-102 hover:border-custom-cyan/40 cursor-pointer">
-                  {/* Subtle Background Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-custom-cyan/3 via-neon-purple/3 to-neon-pink/3 rounded-lg opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300" />
-
-                  {/* Badge Text */}
-                  <span className="relative z-10 text-xs font-medium text-gray-300 group-hover/tech:text-white transition-colors duration-200">
-                    {badge}
-                  </span>
-
-                  {/* Subtle Particles */}
-                  <div className="absolute -top-0.5 -right-0.5 w-0.5 h-0.5 bg-custom-cyan rounded-full opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300" />
-                </div>
-              </div>
+                {badge}
+              </span>
             ))}
           </div>
         </div>
@@ -130,34 +118,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </svg>
             <span>Code</span>
           </a>
-
-          {redirections.playStoreUrl && (
-            <a
-              href={redirections.playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1 px-3 py-2.5 bg-gradient-to-r from-neon-green/20 to-neon-green/30 border border-neon-green/50 rounded-xl text-neon-green font-medium transition-all duration-300 hover:bg-neon-green hover:text-black transform hover:scale-102"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M22,9.5v9a1.5,1.5,0,0,1-1.5,1.5H3.5A1.5,1.5,0,0,1,2,18.5V5.5A1.5,1.5,0,0,1,3.5,4h9ZM8.5,7.5v9l7-4.5Z" />
-              </svg>
-              <span className="text-xs">Store</span>
-            </a>
-          )}
-
-          {redirections.npmUrl && (
-            <a
-              href={redirections.npmUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1 px-3 py-2.5 bg-gradient-to-r from-red-500/20 to-red-600/30 border border-red-500/50 rounded-xl text-red-400 font-medium transition-all duration-300 hover:bg-red-500 hover:text-white transform hover:scale-102"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M0 7v10h6.5V9.5h4V17H17V7H0z" />
-              </svg>
-              <span className="text-xs">NPM</span>
-            </a>
-          )}
         </div>
 
         {/* Subtle Corner Indicators */}

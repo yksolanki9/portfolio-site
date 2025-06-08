@@ -3,8 +3,9 @@ import { useInView } from "react-intersection-observer";
 
 interface WorkExperience {
   period: string;
+  company: string;
   title: string;
-  description: string;
+  techStack: string[];
   tag?: string;
   url: string;
 }
@@ -29,7 +30,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
 
   return (
     <div
-      id="experience"
+      id="journey"
       ref={ref}
       className="relative min-h-screen py-20 lg:py-32 experience-section overflow-hidden"
     >
@@ -49,7 +50,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
         <div className="flex items-center justify-center gap-6 mb-6">
           <div className="w-16 h-[2px] bg-gradient-purple"></div>
           <h2 className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-neon-pink via-custom-cyan to-neon-purple bg-clip-text text-transparent">
-            Experience
+            My Journey
           </h2>
           <div className="w-16 h-[2px] bg-gradient-cyan"></div>
         </div>
@@ -123,30 +124,30 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                     {/* Title with Company and Optional Tag */}
                     <div className="mb-3">
                       <h3 className="text-xl md:text-2xl font-bold text-white">
-                        {exp.title.split("|")[0].trim()}
-                        {exp.title.includes("|") && (
-                          <div
-                            className={`flex items-center gap-3 mt-1 ${
-                              isLeft ? "md:justify-end" : "md:justify-start"
-                            }`}
-                          >
-                            <span className="text-lg text-custom-cyan font-medium">
-                              {exp.title.split("|")[1].trim()}
+                        <div
+                          className={`flex items-center gap-3 mt-1 ${
+                            isLeft ? "md:justify-end" : "md:justify-start"
+                          }`}
+                        >
+                          <span>{exp.company}</span>
+                          {exp.tag && (
+                            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-neon-orange/20 to-neon-pink/30 border border-neon-orange/50 rounded-full text-neon-orange font-medium text-xs transition-all duration-300 hover:bg-neon-orange hover:text-black animate-pulse">
+                              {exp.tag}
                             </span>
-                            {exp.tag && (
-                              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-neon-orange/20 to-neon-pink/30 border border-neon-orange/50 rounded-full text-neon-orange font-medium text-xs transition-all duration-300 hover:bg-neon-orange hover:text-black animate-pulse">
-                                {exp.tag}
-                              </span>
-                            )}
-                          </div>
-                        )}
+                          )}
+                        </div>
+
+                        <div
+                          className={`flex items-center gap-3 mt-1 ${
+                            isLeft ? "md:justify-end" : "md:justify-start"
+                          }`}
+                        >
+                          <span className="text-lg text-custom-cyan font-medium">
+                            {exp.title}
+                          </span>
+                        </div>
                       </h3>
                     </div>
-
-                    {/* Description */}
-                    <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
-                      {exp.description}
-                    </p>
 
                     {/* Tech Tags */}
                     <div
@@ -154,7 +155,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                         isLeft ? "md:justify-end" : "md:justify-start"
                       }`}
                     >
-                      {exp.description.split(", ").map((tech, techIndex) => (
+                      {exp.techStack.map((tech, techIndex) => (
                         <span
                           key={techIndex}
                           className="px-3 py-1 bg-gradient-to-r from-glass-white to-glass-dark rounded-full text-xs border border-gray-600 hover:border-custom-cyan transition-all duration-300 neon-glow"
@@ -262,9 +263,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                 <div className="text-gray-300">Years Experience</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-neon-green mb-2">
-                  5+
-                </div>
+                <div className="text-3xl font-bold text-neon-green mb-2">4</div>
                 <div className="text-gray-300">Companies</div>
               </div>
               <div className="text-center">

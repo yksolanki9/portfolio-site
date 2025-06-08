@@ -101,7 +101,7 @@ export const About = ({ about }: AboutProps) => {
                 }`}
                 style={{ transitionDelay: "800ms", animationDelay: "1s" }}
               >
-                Full Stack
+                Full Stack Dev
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@ export const About = ({ about }: AboutProps) => {
               style={{ transitionDelay: "600ms" }}
             >
               <p
-                className={`leading-relaxed text-gray-200 group-hover:text-white transition-colors duration-300 ${
+                className={`text-sm leading-relaxed text-gray-200 group-hover:text-white transition-colors duration-300 ${
                   inView ? "opacity-100" : "opacity-0"
                 }`}
                 style={{ transitionDelay: "700ms" }}
@@ -174,12 +174,15 @@ export const About = ({ about }: AboutProps) => {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {[
-                    "Angular",
-                    "React",
-                    "Node.js",
-                    "MongoDB",
-                    "TypeScript",
-                    "Ionic",
+                    "react",
+                    "angular",
+                    "nodejs",
+                    "aws",
+                    "ionic",
+                    "capacitor",
+                    "postgres",
+                    "mongodb",
+                    "typescript",
                   ].map((tech, index) => (
                     <span
                       key={tech}
@@ -211,11 +214,11 @@ export const About = ({ about }: AboutProps) => {
                   className="px-6 py-3 bg-gradient-cyan text-black font-semibold rounded-full hover:bg-gradient-purple hover:text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-custom-cyan/50"
                   onClick={() =>
                     document
-                      .getElementById("experience")
+                      .getElementById("journey")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  View Experience
+                  View My Journey
                 </button>
                 <button
                   className="px-6 py-3 border-2 border-custom-cyan text-custom-cyan font-semibold rounded-full hover:bg-custom-cyan hover:text-black transition-all duration-300 transform hover:scale-105"

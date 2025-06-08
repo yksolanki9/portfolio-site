@@ -7,7 +7,7 @@ interface NavBarProps {
 
 const navItems = [
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
+  { href: "#journey", label: "Journey" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
   {
@@ -85,9 +85,18 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
     }
   };
 
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setIsMenuOpen(false);
+    }
+  };
+
   if (isMobileView) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-lg">
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-lg"
+        onClick={handleBackdropClick}
+      >
         <div className="glass-card rounded-3xl p-8 max-w-sm w-full mx-4 transform animate-slide-up">
           {/* Header */}
           <div className="text-center mb-8">
@@ -111,7 +120,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                     isActive
                       ? "bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20 text-white border border-custom-cyan/50"
                       : isResume
-                      ? "bg-gradient-to-r from-neon-purple/30 to-neon-pink/30 text-white border border-neon-purple/60 animate-pulse-glow"
+                      ? "bg-gradient-to-r from-neon-purple/30 to-neon-pink/30 text-white border border-neon-purple/60 shadow-lg shadow-neon-purple/30 animate-pulse-glow"
                       : "text-gray-300 hover:text-white hover:bg-glass-white"
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -125,7 +134,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                       {item.label}
                       {isResume && (
                         <svg
-                          className="inline w-4 h-4 ml-2 animate-bounce"
+                          className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -144,7 +153,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                         isActive
                           ? "bg-custom-cyan animate-pulse"
                           : isResume
-                          ? "bg-neon-purple animate-ping"
+                          ? "bg-neon-pink animate-ping shadow-lg shadow-neon-pink/50"
                           : "bg-gray-600 group-hover:bg-neon-purple"
                       }`}
                     />
@@ -156,14 +165,14 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                       isActive
                         ? "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-100"
                         : isResume
-                        ? "bg-gradient-to-r from-neon-purple via-neon-pink to-neon-orange opacity-100 animate-pulse"
+                        ? "bg-gradient-to-r from-neon-purple via-neon-pink to-neon-orange opacity-100 animate-pulse shadow-sm shadow-neon-orange/50"
                         : "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-0 group-hover:opacity-50"
                     }`}
                   />
 
                   {/* Special glow effect for resume */}
                   {isResume && (
-                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-purple/10 to-neon-pink/10 animate-pulse" />
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-purple/15 to-neon-pink/15 animate-pulse" />
                   )}
                 </button>
               );
@@ -228,19 +237,14 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                     }`}
                   />
 
-                  {/* Enhanced hover effect for resume */}
+                  {/* Enhanced hover effect for resume - removed rectangular background */}
                   <div
                     className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 ${
                       isResume
-                        ? "bg-gradient-to-r from-neon-purple/30 to-neon-pink/30 animate-pulse"
+                        ? "bg-transparent"
                         : "bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20"
                     }`}
                   />
-
-                  {/* Special glow ring for resume */}
-                  {isResume && (
-                    <div className="absolute inset-0 rounded-full border border-neon-purple/50 animate-pulse opacity-70" />
-                  )}
                 </button>
               </li>
             );

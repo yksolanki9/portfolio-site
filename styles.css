@@ -146,28 +146,28 @@ body::-webkit-scrollbar {
 
 /* Enhanced Menu Icon */
 .menu-icon > input {
-  @apply absolute h-[30px] w-[30px] opacity-0;
+  @apply absolute h-[30px] w-[30px] opacity-0 cursor-pointer;
 }
 
 .menu-icon .icon-container {
-  @apply w-[24px] mr-4;
+  @apply w-[28px];
 }
 
 .menu-icon .icon-container div {
-  @apply h-[3px] rounded-xl bg-white mt-1 transition-all duration-300 ease-in-out;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  @apply h-[3px] rounded-xl mt-1 transition-all duration-300 ease-in-out;
+  box-shadow: 0 0 8px rgba(0, 221, 255, 0.4);
 }
 
 .menu-icon > input:checked ~ label > .icon-container > div:nth-child(1) {
-  @apply translate-x-[2px] translate-y-[3px] rotate-45;
+  @apply translate-x-[2px] translate-y-[7px] rotate-45;
 }
 
 .menu-icon > input:checked ~ label > .icon-container > div:nth-child(2) {
-  @apply rotate-[135deg];
+  @apply opacity-0 rotate-180;
 }
 
 .menu-icon > input:checked ~ label > .icon-container > div:nth-child(3) {
-  @apply translate-x-[6px] translate-y-[-4px] rotate-45;
+  @apply translate-x-[2px] translate-y-[-7px] rotate-[-45deg];
 }
 
 /* Modern Timeline */

@@ -8,7 +8,7 @@ export const MenuIcon = ({
   setIsMenuOpen: Function;
 }) => {
   return (
-    <div className="menu-icon">
+    <div className="menu-icon fixed top-6 right-6 z-50">
       <input
         type="checkbox"
         id="menu-toggle"
@@ -16,11 +16,11 @@ export const MenuIcon = ({
         checked={isMenuOpen}
         onChange={() => setIsMenuOpen((prev: boolean) => !prev)}
       />
-      <label htmlFor="menu-toggle">
-        <div className="icon-container">
-          <div className="w-1/2"></div>
-          <div className="w-full"></div>
-          <div className="w-3/4"></div>
+      <label htmlFor="menu-toggle" className="cursor-pointer group">
+        <div className="icon-container p-3 bg-glass-dark rounded-xl border border-gray-600 hover:border-custom-cyan transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-custom-cyan/20">
+          <div className="w-1/2 bg-gradient-to-r from-custom-cyan to-neon-purple"></div>
+          <div className="w-full bg-gradient-to-r from-neon-purple to-neon-pink"></div>
+          <div className="w-3/4 bg-gradient-to-r from-neon-pink to-neon-orange"></div>
         </div>
       </label>
     </div>

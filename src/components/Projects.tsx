@@ -56,24 +56,6 @@ export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
           A collection of projects showcasing my expertise in full-stack
           development, mobile applications, and innovative solutions.
         </p>
-
-        {/* Stats */}
-        <div className="flex justify-center gap-8 mt-8">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-custom-cyan">
-              {projects.length}+
-            </div>
-            <div className="text-sm text-gray-400">Projects</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-neon-purple">4+</div>
-            <div className="text-sm text-gray-400">Years</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-neon-green">10+</div>
-            <div className="text-sm text-gray-400">Technologies</div>
-          </div>
-        </div>
       </div>
 
       {/* Projects Grid */}
