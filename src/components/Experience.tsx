@@ -21,8 +21,15 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
 
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
+  const handleCompanyClick = (url: string) => {
+    if (url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <div
+      id="experience"
       ref={ref}
       className="relative min-h-screen py-20 lg:py-32 experience-section overflow-hidden"
     >
@@ -41,10 +48,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
       >
         <div className="flex items-center justify-center gap-6 mb-6">
           <div className="w-16 h-[2px] bg-gradient-purple"></div>
-          <h2
-            id="experience"
-            className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-neon-pink via-custom-cyan to-neon-purple bg-clip-text text-transparent"
-          >
+          <h2 className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-neon-pink via-custom-cyan to-neon-purple bg-clip-text text-transparent">
             Experience
           </h2>
           <div className="w-16 h-[2px] bg-gradient-cyan"></div>
@@ -95,7 +99,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                 >
                   <div
                     className={`
-                    glass-card rounded-2xl p-6 md:p-8 transition-all duration-500 transform hover-tilt
+                    glass-card rounded-2xl p-6 md:p-8 transition-all duration-500 transform hover-tilt cursor-pointer
                     ${
                       isHovered
                         ? "scale-105 shadow-2xl shadow-custom-cyan/20"
@@ -103,6 +107,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                     }
                     ${isLeft ? "md:text-right" : "md:text-left"}
                   `}
+                    onClick={() => handleCompanyClick(exp.url)}
                   >
                     {/* Period Badge */}
                     <div
@@ -115,15 +120,24 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                       {exp.period}
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                      {exp.title.split("|")[0].trim()}
-                      {exp.title.includes("|") && (
-                        <span className="block text-lg text-custom-cyan mt-1 font-medium">
-                          {exp.title.split("|")[1].trim()}
-                        </span>
-                      )}
-                    </h3>
+                    {/* Title with Company and Optional Tag */}
+                    <div className="mb-3">
+                      <h3 className="text-xl md:text-2xl font-bold text-white">
+                        {exp.title.split("|")[0].trim()}
+                        {exp.title.includes("|") && (
+                          <div className="flex items-center gap-2 mt-1 justify-start md:justify-end">
+                            <span className="text-lg text-custom-cyan font-medium">
+                              {exp.title.split("|")[1].trim()}
+                            </span>
+                            {exp.tag && (
+                              <span className="px-2 py-1 bg-gradient-to-r from-neon-purple to-neon-pink text-white text-xs font-semibold rounded-full animate-pulse">
+                                {exp.tag}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </h3>
+                    </div>
 
                     {/* Description */}
                     <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4">
@@ -147,10 +161,33 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                       ))}
                     </div>
 
+                    {/* Click Indicator */}
+                    <div
+                      className={`absolute top-4 right-4 transition-all duration-300 ${
+                        isHovered
+                          ? "opacity-100 scale-110"
+                          : "opacity-0 scale-75"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4 text-custom-cyan"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </div>
+
                     {/* Decorative Corner */}
                     <div
                       className={`
-                      absolute top-4 w-3 h-3 bg-gradient-to-r from-neon-purple to-custom-cyan rounded-full
+                      absolute bottom-4 w-3 h-3 bg-gradient-to-r from-neon-purple to-custom-cyan rounded-full
                       ${isLeft ? "right-4" : "left-4"}
                       ${isHovered ? "animate-pulse" : ""}
                     `}

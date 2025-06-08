@@ -141,11 +141,6 @@ body::-webkit-scrollbar {
 }
 
 .project-section {
-  background: linear-gradient(
-    135deg,
-    rgba(57, 255, 20, 0.1) 0%,
-    rgba(0, 0, 0, 0.8) 74%
-  );
   position: relative;
 }
 

@@ -173,7 +173,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
   }
 
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 animate-slide-in-left">
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 animate-slide-down">
       <div className="glass-card rounded-full px-6 py-3 shadow-2xl">
         <ul className="flex items-center space-x-6">
           {navItems.map((item, index) => {
@@ -205,7 +205,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                       />
                     </svg>
                   )}

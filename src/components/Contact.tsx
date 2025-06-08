@@ -108,27 +108,27 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
 
         {/* Social Links Grid */}
         <div
-          className={`glass-card rounded-3xl p-8 md:p-12 transition-all duration-1000 delay-300 transform ${
+          className={`glass-card rounded-3xl p-6 md:p-8 transition-all duration-1000 delay-300 transform ${
             inView ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
             {socialLinks.map((social, index) => (
               <a
                 key={social.key}
                 href={urls[social.key as keyof ContactUrls]}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col items-center justify-center p-6 rounded-2xl transition-all duration-500 transform hover:scale-110 ${social.color}`}
+                className={`group relative flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 transform hover:scale-105 ${social.color}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
-                  animationDelay: `${(index + 1) * 200}ms`,
+                  animationDelay: `${(index + 1) * 100}ms`,
                 }}
               >
-                {/* Glow Effect */}
+                {/* Subtle Glow Effect */}
                 <div
-                  className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl ${
+                  className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-lg ${
                     social.key === "GMAIL"
                       ? "bg-red-500"
                       : social.key === "LINKEDIN"
@@ -144,16 +144,12 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
                 />
 
                 {/* Icon Container */}
-                <div
-                  className={`relative z-10 transition-all duration-500 ${
-                    hoveredIndex === index ? "animate-bounce" : ""
-                  }`}
-                >
+                <div className="relative z-10 transition-all duration-300">
                   <FontAwesomeIcon
-                    className={`text-4xl md:text-5xl transition-all duration-500 ${
+                    className={`text-2xl md:text-3xl transition-all duration-300 ${
                       hoveredIndex === index
-                        ? "text-white scale-125 drop-shadow-2xl"
-                        : "text-gray-300 group-hover:scale-110"
+                        ? "text-white scale-110"
+                        : "text-gray-300 group-hover:scale-105"
                     }`}
                     icon={social.icon}
                   />
@@ -161,57 +157,37 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
 
                 {/* Label */}
                 <span
-                  className={`mt-4 text-sm md:text-base font-medium transition-all duration-300 ${
+                  className={`mt-2 text-xs font-medium transition-all duration-200 ${
                     hoveredIndex === index
-                      ? "text-white text-glow"
-                      : "text-gray-400 group-hover:text-white"
+                      ? "text-white"
+                      : "text-gray-400 group-hover:text-gray-200"
                   }`}
                 >
                   {social.label}
                 </span>
 
                 {/* Hover Border Effect */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-current opacity-0 group-hover:opacity-30 transition-all duration-300" />
-
-                {/* Floating Particles on Hover */}
-                {hoveredIndex === index && (
-                  <>
-                    <div className="absolute -top-2 -right-2 w-2 h-2 bg-current rounded-full animate-ping" />
-                    <div className="absolute -bottom-2 -left-2 w-1 h-1 bg-current rounded-full animate-pulse" />
-                  </>
-                )}
+                <div className="absolute inset-0 rounded-xl border border-transparent group-hover:border-current opacity-0 group-hover:opacity-20 transition-all duration-300" />
               </a>
             ))}
           </div>
 
-          {/* Additional Contact Info */}
+          {/* Single Contact Info Card */}
           <div
-            className={`mt-12 pt-8 border-t border-gray-600 transition-all duration-1000 delay-700 ${
+            className={`mt-8 pt-6 border-t border-gray-600 transition-all duration-1000 delay-700 ${
               inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="grid md:grid-cols-2 gap-6 text-left">
-              <div className="glass-card rounded-xl p-6 hover-tilt">
-                <h4 className="text-lg font-semibold text-custom-cyan mb-2">
-                  Let's Build Something Amazing
-                </h4>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  I'm always excited to work on innovative projects and
-                  collaborate with passionate teams. Whether it's a startup idea
-                  or enterprise solution, let's discuss how we can bring it to
-                  life.
-                </p>
-              </div>
-              <div className="glass-card rounded-xl p-6 hover-tilt">
-                <h4 className="text-lg font-semibold text-neon-purple mb-2">
-                  Open for Opportunities
-                </h4>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Currently exploring new challenges in full-stack development,
-                  mobile applications, and emerging technologies. Always ready
-                  for the next adventure!
-                </p>
-              </div>
+            <div className="glass-card rounded-xl p-6 hover-tilt text-center">
+              <h4 className="text-lg font-semibold text-custom-cyan mb-2">
+                Let's Build Something Amazing Together
+              </h4>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                I'm always excited to work on innovative projects and
+                collaborate with passionate teams. Whether it's a startup idea
+                or enterprise solution, let's discuss how we can bring it to
+                life.
+              </p>
             </div>
           </div>
         </div>
