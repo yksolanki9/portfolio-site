@@ -32,13 +32,13 @@ module.exports = {
           "typing 1s steps(20, end) 2.7s, blink-caret 0.5s step-end 1s infinite",
         opacity: "opacity 2s ease-out 1s 1",
         float: "float 6s ease-in-out infinite",
-        "rotate-slow": "rotate-slow 20s linear infinite",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        "rotate-slow": "rotate 3s linear infinite",
+        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         "slide-up": "slide-up 0.8s ease-out",
         "slide-in-left": "slide-in-left 0.8s ease-out",
         "slide-in-right": "slide-in-right 0.8s ease-out",
         "card-hover": "card-hover 0.3s ease-out",
-        glitch: "glitch 2s infinite",
+        glitch: "glitch 0.5s infinite",
         tilt: "tilt 10s infinite linear",
       },
       backgroundImage: {
@@ -86,8 +86,16 @@ module.exports = {
           to: { transform: "rotate(360deg)" },
         },
         "pulse-glow": {
-          "0%": { boxShadow: "0 0 20px rgba(0, 221, 255, 0.4)" },
-          "100%": { boxShadow: "0 0 40px rgba(0, 221, 255, 0.8)" },
+          "0%, 100%": {
+            boxShadow:
+              "0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3)",
+            transform: "scale(1)",
+          },
+          "50%": {
+            boxShadow:
+              "0 0 20px rgba(168, 85, 247, 0.8), 0 0 40px rgba(168, 85, 247, 0.6)",
+            transform: "scale(1.02)",
+          },
         },
         "slide-up": {
           "0%": { transform: "translateY(100px)", opacity: "0" },

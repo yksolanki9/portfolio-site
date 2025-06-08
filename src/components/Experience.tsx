@@ -125,12 +125,16 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                       <h3 className="text-xl md:text-2xl font-bold text-white">
                         {exp.title.split("|")[0].trim()}
                         {exp.title.includes("|") && (
-                          <div className="flex items-center gap-2 mt-1 justify-start md:justify-end">
+                          <div
+                            className={`flex items-center gap-3 mt-1 ${
+                              isLeft ? "md:justify-end" : "md:justify-start"
+                            }`}
+                          >
                             <span className="text-lg text-custom-cyan font-medium">
                               {exp.title.split("|")[1].trim()}
                             </span>
                             {exp.tag && (
-                              <span className="px-2 py-1 bg-gradient-to-r from-neon-purple to-neon-pink text-white text-xs font-semibold rounded-full animate-pulse">
+                              <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-neon-orange/20 to-neon-pink/30 border border-neon-orange/50 rounded-full text-neon-orange font-medium text-xs transition-all duration-300 hover:bg-neon-orange hover:text-black animate-pulse">
                                 {exp.tag}
                               </span>
                             )}

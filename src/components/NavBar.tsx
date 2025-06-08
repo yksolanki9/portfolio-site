@@ -111,7 +111,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                     isActive
                       ? "bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20 text-white border border-custom-cyan/50"
                       : isResume
-                      ? "bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 text-white border border-neon-purple/50"
+                      ? "bg-gradient-to-r from-neon-purple/30 to-neon-pink/30 text-white border border-neon-purple/60 animate-pulse-glow"
                       : "text-gray-300 hover:text-white hover:bg-glass-white"
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -125,7 +125,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                       {item.label}
                       {isResume && (
                         <svg
-                          className="inline w-4 h-4 ml-2"
+                          className="inline w-4 h-4 ml-2 animate-bounce"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -144,20 +144,27 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                         isActive
                           ? "bg-custom-cyan animate-pulse"
                           : isResume
-                          ? "bg-neon-purple animate-pulse"
+                          ? "bg-neon-purple animate-ping"
                           : "bg-gray-600 group-hover:bg-neon-purple"
                       }`}
                     />
                   </div>
 
-                  {/* Animated underline */}
+                  {/* Enhanced animated underline for resume */}
                   <div
-                    className={`absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-custom-cyan to-neon-purple transition-all duration-300 ${
-                      isActive || isResume
-                        ? "opacity-100"
-                        : "opacity-0 group-hover:opacity-50"
+                    className={`absolute bottom-0 left-4 right-4 h-[2px] transition-all duration-300 ${
+                      isActive
+                        ? "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-100"
+                        : isResume
+                        ? "bg-gradient-to-r from-neon-purple via-neon-pink to-neon-orange opacity-100 animate-pulse"
+                        : "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-0 group-hover:opacity-50"
                     }`}
                   />
+
+                  {/* Special glow effect for resume */}
+                  {isResume && (
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-purple/10 to-neon-pink/10 animate-pulse" />
+                  )}
                 </button>
               );
             })}
@@ -188,7 +195,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                     isActive
                       ? "text-custom-cyan text-glow"
                       : isResume
-                      ? "text-neon-purple hover:text-neon-pink"
+                      ? "text-neon-purple hover:text-neon-pink animate-pulse-glow font-bold"
                       : "text-gray-300 hover:text-white"
                   }`}
                   style={{ animationDelay: `${index * 150}ms` }}
@@ -196,7 +203,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                   {item.label}
                   {isResume && (
                     <svg
-                      className="inline w-3 h-3 ml-1"
+                      className="inline w-3 h-3 ml-1 animate-bounce"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -216,19 +223,24 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                       isActive
                         ? "bg-custom-cyan animate-pulse"
                         : isResume
-                        ? "bg-neon-purple group-hover:animate-pulse"
+                        ? "bg-neon-purple animate-ping"
                         : "bg-transparent group-hover:bg-neon-purple"
                     }`}
                   />
 
-                  {/* Hover effect */}
+                  {/* Enhanced hover effect for resume */}
                   <div
                     className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 ${
                       isResume
-                        ? "bg-gradient-to-r from-neon-purple/20 to-neon-pink/20"
+                        ? "bg-gradient-to-r from-neon-purple/30 to-neon-pink/30 animate-pulse"
                         : "bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20"
                     }`}
                   />
+
+                  {/* Special glow ring for resume */}
+                  {isResume && (
+                    <div className="absolute inset-0 rounded-full border border-neon-purple/50 animate-pulse opacity-70" />
+                  )}
                 </button>
               </li>
             );
