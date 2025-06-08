@@ -52,8 +52,9 @@ export const About = ({ about }: AboutProps) => {
         </div>
 
         <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-          Passionate full-stack developer with 4+ years of experience building
-          scalable applications and innovative solutions.
+          Senior Full Stack Developer in Mumbai with 4+ years building scalable
+          web applications for Y Combinator startups. Expert in React, Node.js,
+          Angular, and mobile development.
         </p>
       </div>
 
@@ -96,7 +97,7 @@ export const About = ({ about }: AboutProps) => {
                 <img
                   className="h-[200px] sm:h-[300px] md:h-auto w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                   src={profileImage}
-                  alt="Yash Solanki - Full Stack Developer"
+                  alt="Yash Solanki - Senior Full Stack Developer Mumbai specializing in React Node.js Angular for Y Combinator startups"
                 />
                 {/* Subtle Image Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-custom-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
