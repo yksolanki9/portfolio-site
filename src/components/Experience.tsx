@@ -114,10 +114,10 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3 text-glow">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
                       {exp.title.split("|")[0].trim()}
                       {exp.title.includes("|") && (
-                        <span className="block text-lg text-custom-cyan mt-1">
+                        <span className="block text-lg text-custom-cyan mt-1 font-medium">
                           {exp.title.split("|")[1].trim()}
                         </span>
                       )}

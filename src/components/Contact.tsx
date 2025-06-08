@@ -59,26 +59,17 @@ const socialLinks = [
 
 export const Contact: React.FC<ContactProps> = ({ urls }) => {
   const { inView, ref } = useInView({
-    threshold: 0.7,
+    threshold: 0.3,
     triggerOnce: true,
   });
 
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-
-  const handleMouseMove = React.useCallback((e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: ((e.clientX - rect.left) / rect.width - 0.5) * 20,
-      y: ((e.clientY - rect.top) / rect.height - 0.5) * 20,
-    });
-  }, []);
 
   return (
     <div
+      id="contact"
       ref={ref}
       className="relative py-32 lg:px-16 px-4 min-h-screen flex items-center justify-center overflow-hidden"
-      onMouseMove={handleMouseMove}
     >
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-20">
@@ -98,18 +89,10 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
           className={`transition-all duration-1000 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
-          style={{
-            transform: `perspective(1000px) rotateX(${
-              mousePosition.y * 0.05
-            }deg) rotateY(${mousePosition.x * 0.05}deg)`,
-          }}
         >
           <div className="flex items-center justify-center gap-6 mb-8">
             <div className="w-20 h-[2px] bg-gradient-cyan"></div>
-            <h2
-              id="contact"
-              className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent"
-            >
+            <h2 className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
               Let's Connect
             </h2>
             <div className="w-20 h-[2px] bg-gradient-purple"></div>
@@ -128,13 +111,6 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
           className={`glass-card rounded-3xl p-8 md:p-12 transition-all duration-1000 delay-300 transform ${
             inView ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
-          style={{
-            transform: `perspective(1000px) rotateX(${
-              mousePosition.y * 0.02
-            }deg) rotateY(${mousePosition.x * 0.02}deg) scale(${
-              inView ? 1 : 0.95
-            })`,
-          }}
         >
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {socialLinks.map((social, index) => (

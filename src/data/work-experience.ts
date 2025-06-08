@@ -1,6 +1,11 @@
 export const workExperience = [
   {
-    period: "Aug 2022 - Present",
+    period: "Sep 2023 - Present",
+    title: "Craze | Founding Engineer",
+    description: "React, NodeJs, Postgres, AWS",
+  },
+  {
+    period: "Aug 2022 - Aug 2023",
     title: "Fyle | Member of Technical Staff II",
     description: "Angular, Ionic, Capacitor",
   },
