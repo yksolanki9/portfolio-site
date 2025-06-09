@@ -1,6 +1,4 @@
 import React from "react";
-//@ts-ignore
-import profileImage from "../images/profile.png";
 import { useInView } from "react-intersection-observer";
 
 interface AboutProps {
@@ -96,7 +94,7 @@ export const About = ({ about }: AboutProps) => {
               <div className="relative overflow-hidden rounded-2xl">
                 <img
                   className="h-[200px] sm:h-[300px] md:h-auto w-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  src={profileImage}
+                  src="/profile.png"
                   alt="Yash Solanki - Senior Full Stack Developer Mumbai specializing in React Node.js Angular for Y Combinator startups"
                 />
                 {/* Subtle Image Overlay */}

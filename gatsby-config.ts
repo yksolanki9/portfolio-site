@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Yash Solanki's Portfolio`,
-    siteUrl: `https://www.thesolanki.netlify.app`,
+    siteUrl: `https://yashsolanki.in`,
     description: `Yash Solanki's Personal website.`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
@@ -31,7 +31,15 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/favicon.png",
+        name: "Yash Solanki - Senior Full Stack Developer",
+        short_name: "Yash Solanki",
+        description:
+          "Senior Full Stack Developer in Mumbai with 4+ years building scalable web applications for Y Combinator startups",
+        start_url: "/",
+        background_color: "#0F172A",
+        theme_color: "#00DDFF",
+        display: "standalone",
+        icon: "static/icons/icon-512x512.png",
       },
     },
     {
@@ -46,7 +54,6 @@ const config: GatsbyConfig = {
           head: false,
           respectDNT: true,
           exclude: ["/preview/**", "/do-not-track/me/too/"],
-          origin: "YOUR_SELF_HOSTED_ORIGIN",
           delayOnRouteUpdate: 0,
         },
       },
