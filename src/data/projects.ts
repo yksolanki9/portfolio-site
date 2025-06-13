@@ -38,22 +38,4 @@ export const projects = [
       npmUrl: "https://github.com/yksolanki9/capacitor-share-with-plugin",
     },
   },
-  {
-    title: "Find My Bank",
-    description:
-      "A React application with Node backend which helps users to search for information about their bank branch. It uses dynamic filtering, pagination, API caching and bookmarking.",
-    badges: ["react", "express", "postgres"],
-    redirections: {
-      githubUrl: "https://github.com/yksolanki9/Find-My-Bank",
-    },
-  },
-  {
-    title: "Vidya",
-    description:
-      "A NGO landing page designed with Razorpay payment integration which allows visitors to make donation.",
-    badges: ["react", "materialUI", "razorpay"],
-    redirections: {
-      githubUrl: "https://github.com/yksolanki9/vidya-ngo",
-    },
-  },
 ];
