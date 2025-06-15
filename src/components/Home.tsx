@@ -2,6 +2,7 @@ import * as React from "react";
 import { MenuIcon } from "./MenuIcon";
 import { NavBar } from "./NavBar";
 import { useInView } from "react-intersection-observer";
+import GitHubStats from "./GitHubStats";
 
 export interface HomeProps {
   name: string;
@@ -235,6 +236,16 @@ export const Home = (props: HomeProps) => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* GitHub Stats - Subtle Integration */}
+      {!isMenuOpen && (
+        <GitHubStats
+          username="yksolanki9"
+          className={`transition-all duration-1000 delay-[4500ms] ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        />
       )}
 
       {/* Scroll Indicator */}
