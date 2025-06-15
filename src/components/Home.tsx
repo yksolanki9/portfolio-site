@@ -256,7 +256,7 @@ export const Home = (props: HomeProps) => {
             : "opacity-0 translate-y-4"
         }`}
       >
-        <div className="flex flex-col items-center gap-2 animate-float">
+        <div className="hidden sm:flex flex-col items-center gap-2 animate-float ">
           <span className="text-sm text-gray-400">Scroll to explore</span>
           <div className="w-6 h-10 border-2 border-custom-cyan rounded-full flex justify-center">
             <div className="w-1 h-3 bg-custom-cyan rounded-full mt-2 animate-pulse" />

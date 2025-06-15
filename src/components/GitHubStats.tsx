@@ -293,21 +293,21 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
     {
       label: `${stats.totalContributions} contributions`,
       icon: "💻",
-      position: "bottom-32 right-8 lg:right-16",
+      position: { bottom: "15%", right: "5%" },
       delay: "2000ms",
       gradient: "from-custom-cyan to-neon-green",
     },
     {
       label: `${stats.repositories} repositories`,
       icon: "📁",
-      position: "bottom-64 right-64 lg:right-72",
+      position: { bottom: "25%", right: "25%" },
       delay: "2500ms",
       gradient: "from-neon-purple to-neon-pink",
     },
     {
       label: `${stats.longestStreak} day streak`,
       icon: "🔥",
-      position: "bottom-16 right-96 lg:right-108",
+      position: { bottom: "5%", right: "15%" },
       delay: "3000ms",
       gradient: "from-neon-pink to-neon-orange",
     },
@@ -321,14 +321,14 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
       {floatingTags.map((tag, index) => (
         <div
           key={tag.label}
-          className={`absolute ${
-            tag.position
-          } transform transition-all duration-1000 z-30 ${
+          className={`absolute transform transition-all duration-1000 z-30 ${
             inView
               ? "opacity-70 translate-y-0 scale-100"
               : "opacity-0 translate-y-4 scale-95"
           }`}
           style={{
+            bottom: tag.position.bottom,
+            right: tag.position.right,
             transitionDelay: tag.delay,
             animationDelay: `${index * 2}s`,
           }}
@@ -362,7 +362,7 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
 
       {/* Subtle GitHub link */}
       <div
-        className={`absolute bottom-8 right-8 transition-all duration-1000 z-30 ${
+        className={`hidden sm:block absolute bottom-8 right-8 transition-all duration-1000 z-30 ${
           inView ? "opacity-30 translate-y-0" : "opacity-0 translate-y-4"
         }`}
         style={{ transitionDelay: "3500ms" }}
