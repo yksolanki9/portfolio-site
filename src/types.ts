@@ -16,10 +16,6 @@ export interface HomeProps {
   title: string;
 }
 
-export interface AboutProps {
-  about: string;
-}
-
 export interface ContactProps {
   urls: ContactUrls;
 }
@@ -129,31 +125,21 @@ export interface GitHubStatsProps {
 
 // Blog Types
 export interface BlogPost {
+  id: number;
   title: string;
-  excerpt: string;
-  date: string;
+  platform: string;
+  description: string;
+  url: string;
+  category: string;
+  publishedDate: string;
   readTime: string;
-  tags: string[];
-  slug: string;
-}
-
-// Analytics Types
-export interface AnalyticsProps {
-  trackingId?: string;
+  image: string;
 }
 
 // Utility Types
 export interface MousePosition {
   x: number;
   y: number;
-}
-
-export interface Particle {
-  id: number;
-  size: number;
-  left: number;
-  top: number;
-  delay: number;
 }
 
 // Extended Window Interface for TypeScript

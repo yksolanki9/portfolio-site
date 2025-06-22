@@ -8,42 +8,64 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useInView } from "react-intersection-observer";
-import type { ContactProps, ContactUrls } from "../types";
+
+interface ContactUrls {
+  GMAIL: string;
+  LINKEDIN: string;
+  GITHUB: string;
+  TWITTER: string;
+  INSTAGRAM: string;
+  DEV: string;
+}
+
+interface ContactProps {
+  urls: ContactUrls;
+}
 
 const socialLinks = [
   {
     icon: faEnvelope,
     key: "GMAIL",
     label: "Email",
-    color: "hover:text-red-400",
+    color: "bg-red-500",
+    hoverColor: "hover:text-red-400",
   },
   {
     icon: faLinkedinIn,
     key: "LINKEDIN",
     label: "LinkedIn",
-    color: "hover:text-blue-400",
+    color: "bg-blue-500",
+    hoverColor: "hover:text-blue-400",
   },
   {
     icon: faGithub,
     key: "GITHUB",
     label: "GitHub",
-    color: "hover:text-gray-400",
+    color: "bg-gray-500",
+    hoverColor: "hover:text-gray-400",
   },
   {
     icon: faTwitter,
     key: "TWITTER",
     label: "Twitter",
-    color: "hover:text-blue-300",
+    color: "bg-blue-400",
+    hoverColor: "hover:text-blue-300",
   },
   {
     icon: faInstagram,
     key: "INSTAGRAM",
     label: "Instagram",
-    color: "hover:text-pink-400",
+    color: "bg-pink-500",
+    hoverColor: "hover:text-pink-400",
   },
-  { icon: faDev, key: "DEV", label: "Dev.to", color: "hover:text-green-400" },
+  {
+    icon: faDev,
+    key: "DEV",
+    label: "Dev.to",
+    color: "bg-green-500",
+    hoverColor: "hover:text-green-400",
+  },
 ];
 
 export const Contact: React.FC<ContactProps> = ({ urls }) => {
@@ -108,7 +130,7 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
                 href={urls[social.key as keyof ContactUrls]}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 transform hover:scale-105 ${social.color}`}
+                className={`group relative flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 transform hover:scale-105 ${social.hoverColor}`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{
@@ -117,19 +139,7 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
               >
                 {/* Subtle Glow Effect */}
                 <div
-                  className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-lg ${
-                    social.key === "GMAIL"
-                      ? "bg-red-500"
-                      : social.key === "LINKEDIN"
-                      ? "bg-blue-500"
-                      : social.key === "GITHUB"
-                      ? "bg-gray-500"
-                      : social.key === "TWITTER"
-                      ? "bg-blue-400"
-                      : social.key === "INSTAGRAM"
-                      ? "bg-pink-500"
-                      : "bg-green-500"
-                  }`}
+                  className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-lg ${social.color}`}
                 />
 
                 {/* Icon Container */}
@@ -199,7 +209,19 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
             />
             Send me an email
             <div className="w-0 group-hover:w-6 transition-all duration-300 overflow-hidden">
-              <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
             </div>
           </a>
         </div>

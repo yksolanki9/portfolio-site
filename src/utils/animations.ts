@@ -1,16 +1,3 @@
-import type { Particle } from "../types";
-
-// Generate floating particles for background animations
-export const generateParticles = (count: number = 6): Particle[] => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    delay: Math.random() * 4,
-  }));
-};
-
 // Optimized scroll handler with requestAnimationFrame
 export const createOptimizedScrollHandler = (callback: () => void) => {
   let ticking = false;

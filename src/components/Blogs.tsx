@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { blogPosts } from "../data";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Blogs: React.FC = () => {
   const { ref, inView } = useInView({
@@ -13,7 +13,7 @@ export const Blogs: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-play functionality
+  // Auto-play functionality - changed to 5 seconds
   useEffect(() => {
     if (!isAutoPlaying) return;
 
@@ -21,7 +21,7 @@ export const Blogs: React.FC = () => {
       setCurrentIndex((prevIndex) =>
         prevIndex === blogPosts.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000);
+    }, 5000); // Changed from 4000 to 5000
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
@@ -29,7 +29,7 @@ export const Blogs: React.FC = () => {
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
     setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
+    setTimeout(() => setIsAutoPlaying(true), 10000); // Resume auto-play after 10s
   };
 
   const goToPrevious = () => {
@@ -89,86 +89,127 @@ export const Blogs: React.FC = () => {
             <div className="w-16 h-[2px] bg-gradient-purple"></div>
           </div>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Sharing knowledge through technical articles on React, Node.js,
-            JavaScript, and full-stack development
+            Sharing knowledge through technical articles on Node.js, JavaScript,
+            APIs, and full-stack development
           </p>
         </div>
 
-        {/* Blog Posts Grid */}
+        {/* Carousel Container */}
         <div
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${
-            inView ? "opacity-100" : "opacity-0"
+          className={`relative transition-all duration-1000 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
+          style={{ transitionDelay: "200ms" }}
         >
-          {blogPosts.map((post, index) => (
-            <div
-              key={index}
-              className={`glass-card rounded-2xl p-6 hover-tilt transform transition-all duration-700 ease-out hover:scale-105 ${
-                inView
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-12 opacity-0"
-              }`}
-              style={{ transitionDelay: `${(index + 1) * 200}ms` }}
-            >
-              <div className="flex flex-col h-full">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-custom-cyan transition-colors duration-300">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
-                    <span>{post.date}</span>
-                    <span>{post.readTime}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="px-2 py-1 bg-gradient-to-r from-glass-white to-glass-dark rounded-full text-xs border border-gray-600 hover:border-custom-cyan transition-all duration-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-auto">
-                  <button
-                    onClick={() => window.open(`/blog/${post.slug}`, "_blank")}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-custom-cyan to-neon-purple text-black font-medium rounded-lg transition-all duration-300 hover:scale-105 w-full justify-center"
+          {/* Main Blog Card */}
+          <div className="relative glass-card rounded-3xl p-8 mb-8 hover-tilt group transform transition-all duration-500 hover:scale-[1.02]">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              {/* Blog Content */}
+              <div className="space-y-6">
+                {/* Platform Badge */}
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r ${getPlatformColor(
+                      blogPosts[currentIndex].platform
+                    )} text-white`}
                   >
-                    <span>Read More</span>
-                    <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-                  </button>
+                    {blogPosts[currentIndex].platform}
+                  </span>
+                  <span className="px-3 py-1 rounded-full text-xs bg-gray-700 text-gray-300">
+                    {blogPosts[currentIndex].category}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="text-3xl lg:text-4xl font-bold text-white group-hover:text-custom-cyan transition-colors duration-300">
+                  {blogPosts[currentIndex].title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {blogPosts[currentIndex].description}
+                </p>
+
+                {/* Meta Info */}
+                <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <span>{blogPosts[currentIndex].publishedDate}</span>
+                  <span>•</span>
+                  <span>{blogPosts[currentIndex].readTime}</span>
+                </div>
+
+                {/* CTA Button */}
+                <a
+                  href={blogPosts[currentIndex].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-cyan text-black font-semibold rounded-full hover:bg-gradient-purple hover:text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-custom-cyan/50"
+                >
+                  Read Article
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              </div>
+
+              {/* Blog Image */}
+              <div className="relative">
+                <div className="glass-card rounded-2xl p-4 bg-gradient-to-br from-custom-cyan/10 to-neon-purple/10">
+                  <div className="aspect-video rounded-xl overflow-hidden border border-gray-600 relative group">
+                    <img
+                      src={blogPosts[currentIndex].image}
+                      alt={blogPosts[currentIndex].title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Coming Soon Notice */}
-        <div
-          className={`text-center mt-12 transition-all duration-1000 delay-700 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="glass-card rounded-xl p-6 max-w-2xl mx-auto">
-            <h4 className="text-lg font-semibold text-custom-cyan mb-2">
-              More Articles Coming Soon
-            </h4>
-            <p className="text-gray-300 text-sm">
-              I regularly share technical insights and tutorials. Follow me on{" "}
-              <a
-                href="https://dev.to/yksolanki9"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-custom-cyan hover:text-neon-purple transition-colors duration-300"
-              >
-                Dev.to
-              </a>{" "}
-              for the latest articles.
-            </p>
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-center gap-4">
+            {/* Previous Button */}
+            <button
+              onClick={goToPrevious}
+              className="glass-card p-3 rounded-full hover:bg-custom-cyan/20 transition-all duration-300 transform hover:scale-110"
+            >
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+
+            {/* Slide Indicators */}
+            <div className="flex gap-2">
+              {blogPosts.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "bg-custom-cyan shadow-lg shadow-custom-cyan/50"
+                      : "bg-gray-600 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Next Button */}
+            <button
+              onClick={goToNext}
+              className="glass-card p-3 rounded-full hover:bg-custom-cyan/20 transition-all duration-300 transform hover:scale-110"
+            >
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
           </div>
         </div>
       </div>

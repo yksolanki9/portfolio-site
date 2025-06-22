@@ -1,9 +1,27 @@
 import * as React from "react";
-import { generateParticles } from "../../utils/animations";
 
 interface FloatingParticlesProps {
   count?: number;
 }
+
+interface Particle {
+  id: number;
+  size: number;
+  left: number;
+  top: number;
+  delay: number;
+}
+
+// Generate floating particles for background animations
+export const generateParticles = (count: number = 6): Particle[] => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    size: Math.random() * 4 + 2,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    delay: Math.random() * 4,
+  }));
+};
 
 export const FloatingParticles: React.FC<FloatingParticlesProps> = ({
   count = 6,

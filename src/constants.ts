@@ -8,7 +8,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "#blog", label: "Blogs" },
   { href: "#contact", label: "Contact" },
   {
-    href: "https://drive.google.com/file/d/1GXViaLTnM_Wn_mPRUd2WRrX1LpAH3ABv/view?usp=drive_link",
+    href: "https://drive.google.com/file/d/1sq5ydeNHuI9-Wzdju6-CmI6Fhrziak0w/view?usp=drive_link",
     label: "Resume",
     external: true,
   },

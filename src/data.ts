@@ -1,3 +1,5 @@
+import { BlogPost } from "./types";
+
 // Personal Information
 export const name = "Yash Solanki";
 export const title = "Senior Full Stack Developer";
@@ -12,7 +14,7 @@ export const contactUrls = {
   twitter: "https://twitter.com/yksolanki9",
   dev: "https://dev.to/yksolanki9",
   resume:
-    "https://drive.google.com/file/d/1l4uC4A6XIXr7sYKiyzAinMt_gSI8ix1c/view?usp=sharing",
+    "https://drive.google.com/file/d/1sq5ydeNHuI9-Wzdju6-CmI6Fhrziak0w/view?usp=drive_link",
 };
 
 // Legacy URLs object for backward compatibility
@@ -127,63 +129,109 @@ export const techStack = {
   cloud: ["AWS", "Google Cloud", "Vercel", "Netlify"],
 };
 
-// Social Media Links
-export const socialLinks = [
+export const blogPosts: BlogPost[] = [
   {
-    name: "GitHub",
-    url: contactUrls.github,
-    icon: "github",
-  },
-  {
-    name: "LinkedIn",
-    url: contactUrls.linkedin,
-    icon: "linkedin",
-  },
-  {
-    name: "Twitter",
-    url: contactUrls.twitter,
-    icon: "twitter",
-  },
-  {
-    name: "Instagram",
-    url: contactUrls.instagram,
-    icon: "instagram",
-  },
-  {
-    name: "Dev.to",
-    url: contactUrls.dev,
-    icon: "dev",
-  },
-];
-
-// Blog Posts (placeholder for future blog content)
-export const blogPosts = [
-  {
-    title: "Building Scalable React Applications",
-    excerpt:
-      "Best practices for building large-scale React applications with proper architecture and optimization techniques.",
-    date: "2024-01-15",
+    id: 1,
+    title: "How Did I Build Cropping of Receipts",
+    platform: "Fyle Stories",
+    description: "Deep dive into one of my first projects at Fyle.",
+    url: "https://stories.fylehq.com/p/how-did-i-build-cropping-of-receipts",
+    category: "Mobile App",
+    publishedDate: "2023",
     readTime: "8 min read",
-    tags: ["React", "JavaScript", "Performance"],
-    slug: "building-scalable-react-applications",
+    image:
+      "https://images.unsplash.com/photo-1555421689-491a97ff2040?w=500&h=300&fit=crop&crop=center",
   },
   {
-    title: "Full Stack Development with Node.js and React",
-    excerpt:
-      "A comprehensive guide to building modern web applications using Node.js backend and React frontend.",
-    date: "2024-01-10",
+    id: 2,
+    title: "Node.js REST API: Complete Guide",
+    platform: "Scaler Topics",
+    description:
+      "Comprehensive guide to building robust REST APIs with Node.js, covering best practices and real-world examples.",
+    url: "https://www.scaler.com/topics/nodejs/node-js-rest-api/",
+    category: "Backend Development",
+    publishedDate: "2023",
     readTime: "12 min read",
-    tags: ["Node.js", "React", "Full Stack"],
-    slug: "full-stack-development-nodejs-react",
+    image:
+      "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=500&h=300&fit=crop&crop=center",
   },
   {
-    title: "Mobile App Development with Ionic and Capacitor",
-    excerpt:
-      "Learn how to build cross-platform mobile applications using Ionic framework and Capacitor.",
-    date: "2024-01-05",
+    id: 3,
+    title: "Node.js Fetch: Modern HTTP Requests",
+    platform: "Scaler Topics",
+    description:
+      "Master the fetch API in Node.js for handling HTTP requests with modern JavaScript patterns and error handling.",
+    url: "https://www.scaler.com/topics/nodejs/node-js-fetch/",
+    category: "Node.js",
+    publishedDate: "2023",
+    readTime: "6 min read",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop&crop=center",
+  },
+  {
+    id: 4,
+    title: "Node.js vs PHP: Complete Comparison",
+    platform: "Scaler Topics",
+    description:
+      "In-depth comparison between Node.js and PHP for backend development, performance analysis, and use cases.",
+    url: "https://www.scaler.com/topics/nodejs/node-js-vs-php/",
+    category: "Backend Development",
+    publishedDate: "2023",
     readTime: "10 min read",
-    tags: ["Ionic", "Capacitor", "Mobile"],
-    slug: "mobile-app-development-ionic-capacitor",
+    image:
+      "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?w=500&h=300&fit=crop&crop=center",
+  },
+  {
+    id: 5,
+    title: "Closure in JavaScript: Deep Dive",
+    platform: "Scaler Topics",
+    description:
+      "Understanding JavaScript closures with practical examples, common patterns, and advanced use cases.",
+    url: "https://www.scaler.com/topics/nodejs/closure-in-javascript/",
+    category: "JavaScript",
+    publishedDate: "2023",
+    readTime: "8 min read",
+    image:
+      "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=500&h=300&fit=crop&crop=center",
+  },
+  {
+    id: 6,
+    title: "NPM Publish: Complete Guide",
+    platform: "Scaler Topics",
+    description:
+      "Step-by-step guide to publishing your packages to NPM, including best practices and automation strategies.",
+    url: "https://www.scaler.com/topics/npm-publish/",
+    category: "Node.js",
+    publishedDate: "2023",
+    readTime: "7 min read",
+    image:
+      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop&crop=center",
+  },
+  {
+    id: 7,
+    title: "Noob's Guide to Using Any Google API in Node.js",
+    platform: "Dev.to",
+    description:
+      "Beginner-friendly tutorial for integrating Google APIs into Node.js applications with authentication and best practices.",
+    url: "https://dev.to/yksolanki9/noobs-guide-to-using-any-google-api-in-nodejs-1j8g",
+    category: "API Integration",
+    publishedDate: "2023",
+    readTime: "15 min read",
+    image:
+      "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&h=300&fit=crop&crop=center",
+  },
+  {
+    id: 8,
+    title: "Require vs Import in Node.js",
+    platform: "Dev.to",
+    description:
+      "Understanding the differences between CommonJS require and ES6 import/export in Node.js applications.",
+    url: "https://dev.to/yksolanki9/require-vs-import-in-nodejs-4fap",
+    category: "Node.js",
+    publishedDate: "2023",
+    readTime: "5 min read",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&h=300&fit=crop&crop=center",
   },
 ];
 

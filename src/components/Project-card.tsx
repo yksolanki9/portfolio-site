@@ -2,7 +2,6 @@ import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useInView } from "react-intersection-observer";
-import { badgeUrlMapping } from "../utils";
 import type { ProjectCardProps } from "../types";
 import "../utils/fontawesome";
 
