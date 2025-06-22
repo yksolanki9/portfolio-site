@@ -8,6 +8,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useInView } from "react-intersection-observer";
 import type { ContactProps, ContactUrls } from "../types";
 
@@ -198,19 +199,7 @@ export const Contact: React.FC<ContactProps> = ({ urls }) => {
             />
             Send me an email
             <div className="w-0 group-hover:w-6 transition-all duration-300 overflow-hidden">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
+              <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
             </div>
           </a>
         </div>

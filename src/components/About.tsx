@@ -1,6 +1,6 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import { useMousePosition } from "../hooks";
+import { useMousePosition } from "../hooks/useMousePosition";
 import type { AboutProps } from "../types";
 
 export const About = ({ about }: AboutProps) => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { ArrowRightIcon } from "./icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { blogPosts } from "../data";
 
 export const Blogs: React.FC = () => {
@@ -138,7 +139,7 @@ export const Blogs: React.FC = () => {
                     className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-custom-cyan to-neon-purple text-black font-medium rounded-lg transition-all duration-300 hover:scale-105 w-full justify-center"
                   >
                     <span>Read More</span>
-                    <ArrowRightIcon className="w-4 h-4" />
+                    <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
                   </button>
                 </div>
               </div>

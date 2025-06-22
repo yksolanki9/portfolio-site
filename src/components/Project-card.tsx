@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useInView } from "react-intersection-observer";
-import { GitHubIcon } from "./icons";
 import { badgeUrlMapping } from "../utils";
 import type { ProjectCardProps } from "../types";
 import "../utils/fontawesome";
@@ -99,7 +99,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-gray-700 to-gray-600 rounded-xl text-white font-medium transition-all duration-300 hover:from-custom-cyan hover:to-neon-purple hover:text-black transform hover:scale-102"
           >
-            <GitHubIcon className="w-4 h-4" />
+            <FontAwesomeIcon icon={faGithub} className="w-4 h-4" />
             <span>GitHub</span>
           </a>
         </div>

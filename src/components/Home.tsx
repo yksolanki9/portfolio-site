@@ -3,9 +3,12 @@ import { useInView } from "react-intersection-observer";
 import { MenuIcon } from "./MenuIcon";
 import { NavBar } from "./NavBar";
 import { GitHubStats } from "./GitHubStats";
-import { GitHubIcon, FloatingParticles } from "./";
-import { useMousePosition } from "../hooks";
+import { FloatingParticles } from "./ui/FloatingParticles";
+import { useMousePosition } from "../hooks/useMousePosition";
 import type { HomeProps } from "../types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 export const Home = (props: HomeProps) => {
   const { name, title } = props;
@@ -153,23 +156,17 @@ export const Home = (props: HomeProps) => {
                     className="group relative px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-700 text-white font-semibold rounded-full overflow-hidden transform hover:scale-105 transition-all duration-300 card-3d border border-gray-600 hover:border-custom-cyan"
                   >
                     <div className="flex items-center justify-center gap-3">
-                      <GitHubIcon className="w-5 h-5 group-hover:animate-pulse" />
+                      <FontAwesomeIcon
+                        icon={faGithub}
+                        className="w-5 h-5 group-hover:animate-pulse"
+                      />
                       <span className="relative z-10">
                         <span className="block text-sm">yksolanki9</span>
                       </span>
-                      <svg
+                      <FontAwesomeIcon
+                        icon={faExternalLinkAlt}
                         className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
+                      />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-r from-custom-cyan/10 to-neon-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </a>

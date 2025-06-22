@@ -1,6 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { useInView } from "react-intersection-observer";
-import { ExternalLinkIcon } from "./icons";
 import type { ExperienceProps } from "../types";
 
 export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
@@ -163,7 +164,10 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                           : "opacity-0 scale-75"
                       }`}
                     >
-                      <ExternalLinkIcon className="w-4 h-4 text-custom-cyan" />
+                      <FontAwesomeIcon
+                        icon={faExternalLinkAlt}
+                        className="w-4 h-4 text-custom-cyan"
+                      />
                     </div>
 
                     {/* Decorative Corner */}

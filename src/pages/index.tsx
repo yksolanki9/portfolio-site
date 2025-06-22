@@ -1,16 +1,14 @@
-import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import {
-  About,
-  Home,
-  Experience,
-  Projects,
-  Blogs,
-  Contact,
-  ScrollProgressBar,
-} from "../components";
-import { name, title, about, workExperience, projects, urls } from "../data";
-import { createOptimizedScrollHandler } from "../utils";
+import * as React from "react";
+import { About } from "../components/About";
+import { Blogs } from "../components/Blogs";
+import { Contact } from "../components/Contact";
+import { Experience } from "../components/Experience";
+import { Home } from "../components/Home";
+import { Projects } from "../components/Projects";
+import { ScrollProgressBar } from "../components/ui/ScrollProgressBar";
+import { about, name, projects, title, urls, workExperience } from "../data";
+import { createOptimizedScrollHandler } from "../utils/animations";
 
 const IndexPage: React.FC<PageProps> = () => {
   React.useEffect(() => {

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { ExternalLinkIcon } from "./icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { NAV_ITEMS } from "../constants";
 import type { NavBarProps } from "../types";
 
@@ -154,7 +155,10 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                     >
                       {item.label}
                       {isResume && (
-                        <ExternalLinkIcon className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink flex-shrink-0" />
+                        <FontAwesomeIcon
+                          icon={faExternalLinkAlt}
+                          className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink flex-shrink-0"
+                        />
                       )}
                     </span>
                     <div
@@ -220,7 +224,10 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                   >
                     {item.label}
                     {isResume && (
-                      <ExternalLinkIcon className="w-4 h-4 ml-2 animate-bounce flex-shrink-0" />
+                      <FontAwesomeIcon
+                        icon={faExternalLinkAlt}
+                        className="w-4 h-4 ml-2 animate-bounce flex-shrink-0"
+                      />
                     )}
                   </div>
 
