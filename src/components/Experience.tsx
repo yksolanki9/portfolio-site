@@ -1,18 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-
-interface WorkExperience {
-  period: string;
-  company: string;
-  title: string;
-  techStack: string[];
-  tag?: string;
-  url: string;
-}
-
-interface ExperienceProps {
-  workExperience: WorkExperience[];
-}
+import { ExternalLinkIcon } from "./icons";
+import type { ExperienceProps } from "../types";
 
 export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
   const { ref, inView } = useInView({
@@ -174,19 +163,7 @@ export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
                           : "opacity-0 scale-75"
                       }`}
                     >
-                      <svg
-                        className="w-4 h-4 text-custom-cyan"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
+                      <ExternalLinkIcon className="w-4 h-4 text-custom-cyan" />
                     </div>
 
                     {/* Decorative Corner */}

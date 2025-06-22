@@ -1,31 +1,15 @@
 import * as React from "react";
-
-interface NavBarProps {
-  isMobileView: boolean;
-  setIsMenuOpen: (isOpen: boolean) => void;
-}
-
-const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#journey", label: "Journey" },
-  { href: "#projects", label: "Projects" },
-  { href: "#blog", label: "Blogs" },
-  { href: "#contact", label: "Contact" },
-  {
-    href: "https://drive.google.com/file/d/1GXViaLTnM_Wn_mPRUd2WRrX1LpAH3ABv/view?usp=drive_link",
-    label: "Resume",
-    external: true,
-  },
-];
+import { ExternalLinkIcon } from "./icons";
+import { NAV_ITEMS } from "../constants";
+import type { NavBarProps } from "../types";
 
 export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
   const [activeSection, setActiveSection] = React.useState<string>("");
 
   React.useEffect(() => {
-    const sections = navItems
-      .filter((item) => !item.external)
-      .map((item) => item.href.substring(1));
+    const sections = NAV_ITEMS.filter((item) => !item.external).map((item) =>
+      item.href.substring(1)
+    );
 
     // Set up Intersection Observer for better performance
     const observerOptions: IntersectionObserverInit = {
@@ -86,7 +70,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
 
     // Handle initial hash on page load
     const hash = window.location.hash.substring(1);
-    if (hash && navItems.some((item) => item.href === `#${hash}`)) {
+    if (hash && NAV_ITEMS.some((item) => item.href === `#${hash}`)) {
       setActiveSection(hash);
       // Scroll to the section after a brief delay to ensure DOM is ready
       setTimeout(() => {
@@ -145,7 +129,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
         <div className="glass-card rounded-3xl p-6 max-w-sm w-full mx-4 transform animate-slide-up">
           {/* Mobile Menu Items */}
           <nav className="space-y-4">
-            {navItems.map((item, index) => {
+            {NAV_ITEMS.map((item, index) => {
               const isActive =
                 !item.external && activeSection === item.href.substring(1);
               const isResume = item.external;
@@ -170,13 +154,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                     >
                       {item.label}
                       {isResume && (
-                        <svg
-                          className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink flex-shrink-0"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z" />
-                        </svg>
+                        <ExternalLinkIcon className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink flex-shrink-0" />
                       )}
                     </span>
                     <div
@@ -218,7 +196,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
     <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 animate-slide-down">
       <div className="glass-card rounded-full px-6 py-3 shadow-2xl">
         <ul className="flex items-center space-x-6">
-          {navItems.map((item, index) => {
+          {NAV_ITEMS.map((item, index) => {
             const isActive =
               !item.external && activeSection === item.href.substring(1);
             const isResume = item.external;
@@ -242,13 +220,7 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
                   >
                     {item.label}
                     {isResume && (
-                      <svg
-                        className="w-4 h-4 ml-2 animate-bounce flex-shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z" />
-                      </svg>
+                      <ExternalLinkIcon className="w-4 h-4 ml-2 animate-bounce flex-shrink-0" />
                     )}
                   </div>
 

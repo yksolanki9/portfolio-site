@@ -1,53 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-
-interface GitHubStats {
-  repositories: number;
-  followers: number;
-  following: number;
-  totalContributions: number;
-  longestStreak: number;
-  currentStreak: number;
-  totalStars: number;
-  totalCommits: number;
-}
-
-interface GitHubUser {
-  public_repos: number;
-  followers: number;
-  following: number;
-  created_at: string;
-}
-
-interface GitHubRepo {
-  stargazers_count: number;
-  fork: boolean;
-}
-
-interface ContributionDay {
-  contributionCount: number;
-  date: string;
-}
-
-interface ContributionWeek {
-  contributionDays: ContributionDay[];
-}
-
-interface ContributionsData {
-  user: {
-    contributionsCollection: {
-      contributionCalendar: {
-        totalContributions: number;
-        weeks: ContributionWeek[];
-      };
-    };
-  };
-}
-
-interface GitHubStatsProps {
-  username: string;
-  className?: string;
-}
+import { LinkIcon } from "./icons";
+import type {
+  GitHubStats,
+  GitHubUser,
+  GitHubRepo,
+  ContributionDay,
+  ContributionWeek,
+  ContributionsData,
+  GitHubStatsProps,
+} from "../types";
 
 const GitHubStats: React.FC<GitHubStatsProps> = ({
   username,

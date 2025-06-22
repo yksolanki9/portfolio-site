@@ -1,22 +1,7 @@
-//@ts-nocheck
 import * as React from "react";
 import { ProjectCard } from "./Project-card";
 import { useInView } from "react-intersection-observer";
-
-interface Project {
-  title: string;
-  description: string;
-  badges: string[];
-  redirections: {
-    githubUrl: string;
-    playStoreUrl?: string;
-    npmUrl?: string;
-  };
-}
-
-interface ProjectsProps {
-  projects: Project[];
-}
+import type { ProjectsProps } from "../types";
 
 export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);

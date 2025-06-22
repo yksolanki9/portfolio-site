@@ -1,0 +1,6 @@
+/* Main CSS entry point - imports all organized stylesheets */
+@import "./base.css";
+@import "./components.css";
+@import "./animations.css";
+
+/* Any additional global utilities can be added here */

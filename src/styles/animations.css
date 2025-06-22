@@ -1,0 +1,94 @@
+/* Animation Keyframes and Classes */
+
+/* Floating Elements */
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(even) {
+  animation-delay: -3s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Rotating Elements */
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Particles */
+.particle {
+  position: absolute;
+  background: radial-gradient(
+    circle,
+    rgba(0, 221, 255, 0.8) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle:nth-child(odd) {
+  background: radial-gradient(
+    circle,
+    rgba(176, 38, 255, 0.6) 0%,
+    transparent 70%
+  );
+  animation-duration: 8s;
+}
+
+/* Interactive Background Elements */
+.bg-geometric {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.geometric-shape {
+  position: absolute;
+  border: 1px solid rgba(0, 221, 255, 0.3);
+  animation: rotate-slow 20s linear infinite;
+}
+
+.geometric-shape:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 80%;
+  animation-duration: 25s;
+}
+
+.geometric-shape:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  top: 70%;
+  left: 10%;
+  animation-duration: 15s;
+  animation-direction: reverse;
+}
+
+.geometric-shape:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  left: 5%;
+  animation-duration: 30s;
+}

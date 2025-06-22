@@ -1,8 +1,5 @@
 import React from "react";
-
-interface AnalyticsProps {
-  trackingId?: string;
-}
+import type { AnalyticsProps } from "../types";
 
 export const Analytics: React.FC<AnalyticsProps> = ({
   trackingId = "G-YX71PYVT2P",
@@ -42,10 +39,4 @@ export const Analytics: React.FC<AnalyticsProps> = ({
   return null;
 };
 
-// Extend window type for TypeScript
-declare global {
-  interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-  }
-}
+// Window type is extended in types/index.ts

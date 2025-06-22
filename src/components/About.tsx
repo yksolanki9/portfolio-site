@@ -1,9 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-
-interface AboutProps {
-  about: string;
-}
+import { useMousePosition } from "../hooks";
+import type { AboutProps } from "../types";
 
 export const About = ({ about }: AboutProps) => {
   const { ref, inView } = useInView({
@@ -11,15 +9,7 @@ export const About = ({ about }: AboutProps) => {
     triggerOnce: true,
   });
 
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-
-  const handleMouseMove = React.useCallback((e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setMousePosition({
-      x: ((e.clientX - rect.left) / rect.width - 0.5) * 5,
-      y: ((e.clientY - rect.top) / rect.height - 0.5) * 5,
-    });
-  }, []);
+  const { mousePosition, handleMouseMove } = useMousePosition();
 
   return (
     <div

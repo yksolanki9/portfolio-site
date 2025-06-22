@@ -9,19 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { useInView } from "react-intersection-observer";
-
-interface ContactUrls {
-  GMAIL: string;
-  LINKEDIN: string;
-  GITHUB: string;
-  TWITTER: string;
-  INSTAGRAM: string;
-  DEV: string;
-}
-
-interface ContactProps {
-  urls: ContactUrls;
-}
+import type { ContactProps, ContactUrls } from "../types";
 
 const socialLinks = [
   {

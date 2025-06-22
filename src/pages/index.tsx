@@ -1,15 +1,17 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
-import { About } from "../components/About";
-import { Home } from "../components/Home";
-import { Experience } from "../components/Experience";
-import { Projects } from "../components/Projects";
-import { Blogs } from "../components/Blogs";
-import { Contact } from "../components/Contact";
-import { name, title, about } from "../data/about";
-import { workExperience } from "../data/work-experience";
-import { projects } from "../data/projects";
-import { urls } from "../data/contact";
+import {
+  About,
+  Home,
+  Experience,
+  Projects,
+  Blogs,
+  Contact,
+  ScrollProgressBar,
+  BackToTopButton,
+} from "../components";
+import { name, title, about, workExperience, projects, urls } from "../data";
+import { createOptimizedScrollHandler } from "../utils";
 
 const IndexPage: React.FC<PageProps> = () => {
   React.useEffect(() => {
@@ -44,16 +46,7 @@ const IndexPage: React.FC<PageProps> = () => {
     };
 
     // Performance optimized scroll handler
-    let ticking = false;
-    const optimizedScrollHandler = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+    const optimizedScrollHandler = createOptimizedScrollHandler(handleScroll);
 
     window.addEventListener("scroll", optimizedScrollHandler);
     addCursorEffect();
@@ -138,49 +131,10 @@ const IndexPage: React.FC<PageProps> = () => {
       </main>
 
       {/* Scroll Progress Indicator */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-dark-700 z-50">
-        <div
-          className="h-full bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink transition-all duration-150 ease-out"
-          style={{
-            width: `${
-              typeof window !== "undefined"
-                ? (window.pageYOffset /
-                    (document.documentElement.scrollHeight -
-                      window.innerHeight)) *
-                  100
-                : 0
-            }%`,
-          }}
-        />
-      </div>
+      <ScrollProgressBar />
 
       {/* Back to Top Button */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-8 right-8 z-40 glass-card p-4 rounded-full opacity-0 hover:opacity-100 transition-all duration-300 transform hover:scale-110 group"
-        style={{
-          opacity:
-            typeof window !== "undefined" && window.pageYOffset > 1000 ? 1 : 0,
-          pointerEvents:
-            typeof window !== "undefined" && window.pageYOffset > 1000
-              ? "auto"
-              : "none",
-        }}
-      >
-        <svg
-          className="w-6 h-6 text-custom-cyan group-hover:text-white transition-colors duration-300"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 10l7-7m0 0l7 7m-7-7v18"
-          />
-        </svg>
-      </button>
+      <BackToTopButton />
 
       {/* Performance Optimization: Preload critical resources */}
       {typeof window !== "undefined" && (

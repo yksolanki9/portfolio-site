@@ -1,0 +1,44 @@
+/* Glass Morphism Effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D Card Effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+}
+
+.card-3d:hover {
+  transform: rotateX(-5deg) rotateY(10deg) translateZ(20px);
+  box-shadow: 0 20px 60px rgba(0, 221, 255, 0.3),
+    0 0 40px rgba(176, 38, 255, 0.2);
+}
+
+/* Neon Glow Effects */
+.neon-glow {
+  filter: drop-shadow(0 0 10px currentColor);
+  transition: all 0.3s ease;
+}
+
+.neon-glow:hover {
+  filter: drop-shadow(0 0 20px currentColor) drop-shadow(0 0 40px currentColor);
+}
+
+/* Text Effects */
+.text-glow {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+.hover-tilt {
+  transition: transform 0.3s ease;
+}
+
+.hover-tilt:hover {
+  transform: rotate(-1deg);
+}
