@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { LinkIcon } from "./icons";
 import type {
-  GitHubStats,
-  GitHubUser,
-  GitHubRepo,
   ContributionDay,
   ContributionWeek,
   ContributionsData,
+  GitHubRepo,
   GitHubStatsProps,
+  GitHubUser,
+  IGitHubStats,
 } from "../types";
 
-const GitHubStats: React.FC<GitHubStatsProps> = ({
+export const GitHubStats: React.FC<GitHubStatsProps> = ({
   username,
   className = "",
 }) => {
-  const [stats, setStats] = useState<GitHubStats>({
+  const [stats, setStats] = useState<IGitHubStats>({
     repositories: 0,
     followers: 0,
     following: 0,
@@ -344,5 +343,3 @@ const GitHubStats: React.FC<GitHubStatsProps> = ({
     </div>
   );
 };
-
-export default GitHubStats;

@@ -79,7 +79,7 @@ export interface ProjectCardProps {
 }
 
 // GitHub Stats Types
-export interface GitHubStats {
+export interface IGitHubStats {
   repositories: number;
   followers: number;
   following: number;

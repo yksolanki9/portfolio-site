@@ -1,15 +1,15 @@
 // Main page components
 export { About } from "./About";
-export { Home } from "./Home";
-export { Experience } from "./Experience";
-export { Projects } from "./Projects";
+export { Analytics } from "./Analytics";
 export { Blogs } from "./Blogs";
 export { Contact } from "./Contact";
-export { NavBar } from "./NavBar";
+export { Experience } from "./Experience";
+export { GitHubStats } from "./GitHubStats";
+export { Home } from "./Home";
 export { MenuIcon } from "./MenuIcon";
+export { NavBar } from "./NavBar";
 export { ProjectCard } from "./Project-card";
-export { default as GitHubStats } from "./GitHubStats";
-export { Analytics } from "./Analytics";
+export { Projects } from "./Projects";
 
 // UI components
 export * from "./ui";

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useInView } from "react-intersection-observer";
 import { MenuIcon } from "./MenuIcon";
 import { NavBar } from "./NavBar";
-import GitHubStats from "./GitHubStats";
+import { GitHubStats } from "./GitHubStats";
 import { GitHubIcon, FloatingParticles } from "./";
 import { useMousePosition } from "../hooks";
 import type { HomeProps } from "../types";
