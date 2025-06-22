@@ -31,7 +31,7 @@ export const calculateScrollProgress = (): number => {
   if (typeof window === "undefined") return 0;
 
   return (
-    (window.pageYOffset /
+    (window.scrollY /
       (document.documentElement.scrollHeight - window.innerHeight)) *
     100
   );

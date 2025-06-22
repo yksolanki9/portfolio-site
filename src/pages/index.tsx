@@ -8,7 +8,6 @@ import {
   Blogs,
   Contact,
   ScrollProgressBar,
-  BackToTopButton,
 } from "../components";
 import { name, title, about, workExperience, projects, urls } from "../data";
 import { createOptimizedScrollHandler } from "../utils";
@@ -35,7 +34,7 @@ const IndexPage: React.FC<PageProps> = () => {
 
     // Add scroll-based parallax effect
     const handleScroll = () => {
-      const scrolled = window.pageYOffset;
+      const scrolled = window.scrollY;
       const parallaxElements = document.querySelectorAll(".parallax-element");
 
       parallaxElements.forEach((el, index) => {
@@ -132,9 +131,6 @@ const IndexPage: React.FC<PageProps> = () => {
 
       {/* Scroll Progress Indicator */}
       <ScrollProgressBar />
-
-      {/* Back to Top Button */}
-      <BackToTopButton />
 
       {/* Performance Optimization: Preload critical resources */}
       {typeof window !== "undefined" && (

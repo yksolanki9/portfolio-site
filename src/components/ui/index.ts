@@ -1,3 +1,2 @@
-export { ScrollProgressBar } from "./ScrollProgressBar";
-export { BackToTopButton } from "./BackToTopButton";
 export { FloatingParticles } from "./FloatingParticles";
+export { ScrollProgressBar } from "./ScrollProgressBar";
