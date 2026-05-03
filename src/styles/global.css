@@ -1,31 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* 
-.menu-icon {
-  background: yellow;
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-.menu-icon input {
-  @apply absolute h-[30px] w-[30px] opacity-0;
-} 
-
-.menu-icon .icon-container {
-  @apply w-[24px] mr-4;
+* {
+  box-sizing: border-box;
 }
 
-.menu-icon .icon-container div {
-  @apply h-[3px] rounded-xl bg-white mt-1;
+main,
+section,
+div,
+article,
+nav,
+header,
+footer {
+  background: transparent !important;
 }
 
-.menu-icon input:checked ~ .icon-container div:nth-child(1) {
-  transform: translate(4px, 6px) rotate(45deg);
-} 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+li,
+small,
+strong,
+label,
+button {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
 
-.menu-icon input:checked ~ .icon-container div:nth-child(2) {
-  transform: rotate(135deg);
-} 
+button,
+a {
+  transition: opacity 0.2s ease;
+}
 
-.menu-icon input:checked ~ .icon-container div:nth-child(3) {
-  transform: translate(9px, -8px) rotate(45deg);
-}  */
+button:hover,
+a:hover {
+  opacity: 0.75;
+}
