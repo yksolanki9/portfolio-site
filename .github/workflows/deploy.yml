@@ -9,11 +9,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: enriikke/gatsby-gh-pages-action@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: main
-          deploy-repo: yksolanki9.github.io
-          git-config-name: yksolanki9
-          git-config-email: yashsolanki1709@gmail.com
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
+          external_repository: yksolanki9/yksolanki9.github.io
+          publish_branch: main
+          publish_dir: ./public
+          user_name: yksolanki9
+          user_email: yashsolanki1709@gmail.com
