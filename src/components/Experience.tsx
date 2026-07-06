@@ -1,272 +1,125 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { useInView } from "react-intersection-observer";
+import { SectionHeading } from "./ui/SectionHeading";
+import { workExperience as allExperience } from "../data";
 import type { ExperienceProps } from "../types";
 
+const highlights = [
+  { value: "5+", label: "Years of experience" },
+  { value: `${allExperience.length}`, label: "Companies shipped for" },
+  { value: "AI", label: "Agentic AI & video generation" },
+];
+
 export const Experience: React.FC<ExperienceProps> = ({ workExperience }) => {
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
+  const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
 
-  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
-
-  const handleCompanyClick = (url: string) => {
-    if (url) {
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
+  const openUrl = (url: string) => {
+    if (url) window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
     <div
       id="journey"
-      ref={ref}
-      className="relative min-h-screen py-20 lg:py-32 experience-section overflow-hidden"
+      className="bg-paper-alt border-y border-line"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-32 right-20 w-36 h-36 border border-neon-pink rounded-full animate-pulse floating-element" />
-        <div className="absolute bottom-20 left-16 w-28 h-28 border border-custom-cyan rounded-lg transform rotate-45 animate-rotate-slow" />
-        <div className="absolute top-1/2 right-10 w-20 h-20 bg-gradient-purple rounded-full opacity-30 animate-float" />
-      </div>
+      <div className="max-w-content mx-auto px-6 lg:px-10 py-24 lg:py-32">
+        <SectionHeading
+          index="02"
+          kicker="Experience"
+          title="The journey so far"
+          description="Leaving my mark, one startup at a time."
+        />
 
-      {/* Section Header */}
-      <div
-        className={`text-center mb-20 transition-all duration-1000 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        <div className="flex items-center justify-center gap-6 mb-6">
-          <div className="w-16 h-[2px] bg-gradient-purple"></div>
-          <h2 className="text-4xl sm:text-6xl font-bold text-glow bg-gradient-to-r from-neon-pink via-custom-cyan to-neon-purple bg-clip-text text-transparent">
-            My Journey
-          </h2>
-          <div className="w-16 h-[2px] bg-gradient-cyan"></div>
-        </div>
+        <div ref={ref} className="mt-16">
+          {workExperience.map((exp, index) => (
+            <div
+              key={index}
+              role="link"
+              tabIndex={0}
+              onClick={() => openUrl(exp.url)}
+              onKeyDown={(e) => e.key === "Enter" && openUrl(exp.url)}
+              className={`group grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-y-3 gap-x-6 items-start py-8 border-t border-line cursor-pointer reveal ${
+                inView ? "is-visible" : ""
+              } ${index === workExperience.length - 1 ? "border-b" : ""}`}
+              style={{ transitionDelay: `${index * 80}ms` }}
+            >
+              {/* Period */}
+              <div className="text-sm text-faint pt-1 tabular-nums">
+                {exp.period}
+              </div>
 
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-          My professional journey through 4+ years of software development,
-          building scalable solutions and leading technical initiatives.
-        </p>
-      </div>
-
-      {/* Modern Timeline */}
-      <div className="relative max-w-6xl mx-auto px-4">
-        {/* Central Timeline Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-custom-cyan via-neon-purple to-neon-pink rounded-full hidden md:block">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-custom-cyan rounded-full animate-pulse" />
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-neon-pink rounded-full animate-pulse" />
-        </div>
-
-        {/* Experience Items */}
-        <div className="relative">
-          {workExperience.map((exp, index) => {
-            const isLeft = index % 2 === 0;
-            const isHovered = hoveredIndex === index;
-
-            return (
-              <div
-                key={index}
-                className={`relative flex items-center mb-16 md:mb-20 transition-all duration-700 ease-out ${
-                  inView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
-                }`}
-                style={{ transitionDelay: `${(index + 1) * 300}ms` }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Content Container */}
-                <div
-                  className={`
-                  w-full md:w-5/12 
-                  ${
-                    isLeft
-                      ? "md:ml-0 md:mr-auto md:pr-8"
-                      : "md:ml-auto md:mr-0 md:pl-8"
-                  }
-                `}
-                >
-                  <div
-                    className={`
-                    glass-card rounded-2xl p-6 md:p-8 transition-all duration-500 transform hover-tilt cursor-pointer
-                    ${
-                      isHovered
-                        ? "scale-105 shadow-2xl shadow-custom-cyan/20"
-                        : "scale-100"
-                    }
-                    ${isLeft ? "md:text-right" : "md:text-left"}
-                  `}
-                    onClick={() => handleCompanyClick(exp.url)}
-                  >
-                    {/* Period Badge */}
-                    <div
-                      className={`
-                      inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4
-                      bg-gradient-to-r from-custom-cyan to-neon-purple text-white
-                      ${isHovered ? "animate-pulse" : ""}
-                    `}
-                    >
-                      {exp.period}
-                    </div>
-
-                    {/* Title with Company and Optional Tag */}
-                    <div className="mb-3">
-                      <h3 className="text-xl md:text-2xl font-bold text-white">
-                        <div
-                          className={`flex items-center gap-3 mt-1 ${
-                            isLeft ? "md:justify-end" : "md:justify-start"
+              {/* Company + role + tech */}
+              <div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <h3 className="font-display text-2xl sm:text-3xl text-ink tracking-tight group-hover:text-accent transition-colors">
+                    {exp.company}
+                  </h3>
+                  {exp.tag && (
+                    <span className="inline-flex items-center rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold tracking-wide text-accent">
+                      {exp.tag}
+                    </span>
+                  )}
+                </div>
+                {exp.roles.length > 1 ? (
+                  <ul className="mt-3 space-y-3 border-l border-line pl-4">
+                    {exp.roles.map((role, i) => (
+                      <li key={i} className="relative">
+                        <span
+                          className={`absolute -left-[21px] top-2 h-1.5 w-1.5 rounded-full ${
+                            i === 0 ? "bg-accent" : "bg-line"
                           }`}
-                        >
-                          <span>{exp.company}</span>
-                          {exp.tag && (
-                            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-neon-orange/20 to-neon-pink/30 border border-neon-orange/50 rounded-full text-neon-orange font-medium text-xs transition-all duration-300 hover:bg-neon-orange hover:text-black animate-pulse">
-                              {exp.tag}
-                            </span>
-                          )}
-                        </div>
-
-                        <div
-                          className={`flex items-center gap-3 mt-1 ${
-                            isLeft ? "md:justify-end" : "md:justify-start"
-                          }`}
-                        >
-                          <span className="text-lg text-custom-cyan font-medium">
-                            {exp.title}
+                        />
+                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+                          <span className="text-base text-ink-soft">
+                            {role.title}
+                          </span>
+                          <span className="text-sm text-faint tabular-nums">
+                            {role.period}
                           </span>
                         </div>
-                      </h3>
-                    </div>
-
-                    {/* Tech Tags */}
-                    <div
-                      className={`flex flex-wrap gap-2 ${
-                        isLeft ? "md:justify-end" : "md:justify-start"
-                      }`}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-1 text-base text-muted">
+                    {exp.roles[0].title}
+                  </p>
+                )}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {exp.techStack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="rounded-full border border-line bg-paper px-3 py-1 text-xs text-ink-soft"
                     >
-                      {exp.techStack.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-gradient-to-r from-glass-white to-glass-dark rounded-full text-xs border border-gray-600 hover:border-custom-cyan transition-all duration-300 neon-glow"
-                          style={{ animationDelay: `${techIndex * 100}ms` }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Click Indicator */}
-                    <div
-                      className={`absolute top-4 right-4 transition-all duration-300 ${
-                        isHovered
-                          ? "opacity-100 scale-110"
-                          : "opacity-0 scale-75"
-                      }`}
-                    >
-                      <FontAwesomeIcon
-                        icon={faExternalLinkAlt}
-                        className="w-4 h-4 text-custom-cyan"
-                      />
-                    </div>
-
-                    {/* Decorative Corner */}
-                    <div
-                      className={`
-                      absolute bottom-4 w-3 h-3 bg-gradient-to-r from-neon-purple to-custom-cyan rounded-full
-                      ${isLeft ? "right-4" : "left-4"}
-                      ${isHovered ? "animate-pulse" : ""}
-                    `}
-                    />
-                  </div>
-                </div>
-
-                {/* Timeline Dot (Desktop) */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
-                  <div
-                    className={`
-                    w-6 h-6 rounded-full border-4 border-white transition-all duration-300
-                    ${
-                      isHovered
-                        ? "bg-gradient-to-r from-custom-cyan to-neon-purple scale-125 shadow-lg shadow-custom-cyan/50"
-                        : "bg-gradient-to-r from-neon-purple to-neon-pink"
-                    }
-                  `}
-                  >
-                    <div className="absolute inset-1 rounded-full bg-white opacity-30"></div>
-                  </div>
-
-                  {/* Connection Line to Card */}
-                  <div
-                    className={`
-                    absolute top-1/2 transform -translate-y-1/2 w-8 h-[2px] 
-                    bg-gradient-to-r from-custom-cyan to-transparent
-                    ${isLeft ? "left-6" : "right-6"}
-                    ${isHovered ? "opacity-100" : "opacity-50"}
-                    transition-opacity duration-300
-                  `}
-                  />
-                </div>
-
-                {/* Mobile Timeline Dot */}
-                <div className="md:hidden absolute left-4 top-6">
-                  <div
-                    className={`
-                    w-4 h-4 rounded-full border-2 border-white transition-all duration-300
-                    ${
-                      isHovered
-                        ? "bg-gradient-to-r from-custom-cyan to-neon-purple scale-125"
-                        : "bg-gradient-to-r from-neon-purple to-neon-pink"
-                    }
-                  `}
-                  />
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
-            );
-          })}
+
+              {/* Arrow */}
+              <div className="hidden md:flex pt-2 justify-end">
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  className="w-4 h-4 text-faint opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-accent transition-all duration-300"
+                />
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Achievement Highlights */}
-        <div
-          className={`mt-20 text-center transition-all duration-1000 delay-1000 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="glass-card rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-6 text-neon-purple">
-              Career Highlights
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-custom-cyan mb-2">
-                  4+
-                </div>
-                <div className="text-gray-300">Years Experience</div>
+        {/* Highlights */}
+        <div className="mt-20 grid grid-cols-3 gap-6 border-t border-line pt-12">
+          {highlights.map((h) => (
+            <div key={h.label} className="text-center sm:text-left">
+              <div className="font-display text-4xl sm:text-5xl text-ink tracking-tight">
+                {h.value}
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-neon-green mb-2">4</div>
-                <div className="text-gray-300">Companies</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-neon-orange mb-2">
-                  100+
-                </div>
-                <div className="text-gray-300">Projects Delivered</div>
-              </div>
+              <div className="mt-2 text-sm text-muted">{h.label}</div>
             </div>
-
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <div className="px-4 py-2 bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20 rounded-full border border-custom-cyan/30 text-sm">
-                Full Stack Development
-              </div>
-              <div className="px-4 py-2 bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 rounded-full border border-neon-purple/30 text-sm">
-                Mobile Applications
-              </div>
-              <div className="px-4 py-2 bg-gradient-to-r from-neon-green/20 to-neon-orange/20 rounded-full border border-neon-green/30 text-sm">
-                Team Leadership
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
