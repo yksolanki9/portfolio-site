@@ -35,10 +35,15 @@ export interface ExperienceProps {
   workExperience: WorkExperience[];
 }
 
+export interface ExperienceRole {
+  title: string;
+  period: string;
+}
+
 export interface WorkExperience {
   period: string;
   company: string;
-  title: string;
+  roles: ExperienceRole[];
   techStack: string[];
   tag?: string;
   url: string;

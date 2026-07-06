@@ -2,8 +2,8 @@ import { BlogPost } from "./types";
 
 // Personal Information
 export const name = "Yash Solanki";
-export const title = "Senior Full Stack Developer";
-export const about = `I'm a Senior Full Stack Developer based in Mumbai, India, with 4+ years of experience building scalable web applications for high-growth startups, including Y Combinator companies. Currently serving as a Founding Engineer at Craze (YC S22), I specialize in React, Node.js, Angular, and mobile development. My expertise spans both frontend and backend technologies, with a proven track record of delivering robust, user-focused solutions for startups from ideation to scale. I thrive in fast-paced startup environments and am passionate about leveraging cutting-edge technologies to solve complex real-world problems.`;
+export const title = "Full Stack & AI Engineer";
+export const about = `I'm a full-stack and AI engineer based in Mumbai, India, with 5+ years of experience building scalable products for high-growth startups, including Y Combinator companies. As the first engineer at Craze (YC S22), I've helped shape the product from the ground up: we began with an HRMS platform, then moved into agentic AI, and today I'm focused on AI video generation, architecting and shipping AI-driven products end to end. My focus now is firmly on AI: designing agentic systems, LLM and RAG pipelines, and generative-video tooling, all built on a solid full-stack foundation of React, Node.js, and Angular. I thrive in fast-paced startup environments and love turning ambitious, open-ended ideas into robust, user-focused products.`;
 
 // Contact Information
 export const contactUrls = {
@@ -34,44 +34,35 @@ export const workExperience = [
   {
     period: "Sep 2023 - Present",
     company: "Craze",
-    title: "Founding Engineer",
-    techStack: ["react", "nodejs", "postgres", "aws"],
+    roles: [{ title: "Founding Engineer", period: "Sep 2023 - Present" }],
+    techStack: ["react", "nodejs", "typescript", "llms", "agentic ai", "video gen"],
     tag: "YC S22",
     url: "https://crazehq.com",
   },
   {
-    period: "Aug 2022 - Aug 2023",
+    period: "Aug 2021 - Aug 2023",
     company: "Fyle",
-    title: "Member of Technical Staff II",
+    roles: [
+      { title: "Member of Technical Staff II", period: "Aug 2022 - Aug 2023" },
+      { title: "Member of Technical Staff I", period: "Jan 2022 - Jul 2022" },
+      { title: "Full Stack Developer Intern", period: "Aug 2021 - Jan 2022" },
+    ],
     techStack: ["angular", "ionic", "capacitor"],
-    url: "https://fylehq.com",
-  },
-  {
-    period: "Jan 2022 - Jul 2022",
-    company: "Fyle",
-    title: "Member of Technical Staff I",
-    techStack: ["angular", "ionic", "capacitor"],
-    url: "https://fylehq.com",
-  },
-  {
-    period: "Aug 2021 - Jan 2022",
-    company: "Fyle",
-    title: "Full Stack Developer Intern",
-    techStack: ["angular", "ionic", "capacitor"],
+    tag: "Acquired by Sage",
     url: "https://fylehq.com",
   },
   {
     period: "Jun 2021 - Jul 2021",
     company: "Jeevam Health",
-    title: "Backend Intern",
+    roles: [{ title: "Backend Intern", period: "Jun 2021 - Jul 2021" }],
     techStack: ["nodejs", "expressjs", "mongodb"],
     tag: "YC S20",
     url: "https://www.linkedin.com/company/jeevam-health",
   },
   {
     period: "May 2020 - Jul 2020",
-    company: "Samsung Research",
-    title: "SDE Intern",
+    company: "Samsung Research Institute",
+    roles: [{ title: "SDE Intern", period: "May 2020 - Jul 2020" }],
     techStack: ["matlab", "nyusim", "channel simulations"],
     url: "https://research.samsung.com/sri-b",
   },
@@ -124,6 +115,13 @@ export const projects = [
 export const techStack = {
   frontend: ["React", "Angular", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"],
   backend: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "AWS"],
+  ai: [
+    "LLMs",
+    "Agentic AI",
+    "Video Generation",
+    "RAG",
+    "Prompt Engineering",
+  ],
   mobile: ["Ionic", "Capacitor", "React Native"],
   tools: ["Git", "Docker", "Webpack", "Vite", "Jest"],
   cloud: ["AWS", "Google Cloud", "Vercel", "Netlify"],
@@ -239,9 +237,13 @@ export const blogPosts: BlogPost[] = [
 export const seoData = {
   title: `${name} - ${title}`,
   description:
-    "Senior Full Stack Developer in Mumbai with 4+ years of experience building scalable web applications for Y Combinator startups. Expert in React, Node.js, Angular, and mobile development.",
+    "Full Stack & AI Engineer in Mumbai with 5+ years building scalable products for Y Combinator startups. First engineer at Craze (YC S22), now building agentic AI and video-generation products. Expert in React, Node.js, Angular, LLMs, and AI agents.",
   keywords: [
     "Full Stack Developer",
+    "AI Engineer",
+    "Agentic AI",
+    "Video Generation",
+    "LLM",
     "React",
     "Node.js",
     "Angular",
@@ -252,6 +254,6 @@ export const seoData = {
     "JavaScript",
   ],
   author: name,
-  url: "https://yksolanki9.github.io",
-  image: "/profile.png",
+  url: "https://yashsolanki.in",
+  image: "https://yashsolanki.in/profile.png",
 };
