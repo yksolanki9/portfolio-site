@@ -2,223 +2,159 @@ import * as React from "react";
 import { useInView } from "react-intersection-observer";
 import { MenuIcon } from "./MenuIcon";
 import { NavBar } from "./NavBar";
-import { GitHubStats } from "./GitHubStats";
-import { FloatingParticles } from "./ui/FloatingParticles";
-import { useMousePosition } from "../hooks/useMousePosition";
 import type { HomeProps } from "../types";
+import { contactUrls } from "../data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faLinkedinIn,
+  faXTwitter,
+  faDev,
+} from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+
+const socials = [
+  { icon: faGithub, href: contactUrls.github, label: "GitHub" },
+  { icon: faLinkedinIn, href: contactUrls.linkedin, label: "LinkedIn" },
+  { icon: faXTwitter, href: contactUrls.twitter, label: "Twitter" },
+  { icon: faDev, href: contactUrls.dev, label: "Dev.to" },
+  { icon: faEnvelope, href: contactUrls.email, label: "Email" },
+];
+
+const marqueeItems = [
+  "Agentic AI",
+  "LLMs",
+  "Video Generation",
+  "RAG",
+  "Prompt Engineering",
+  "React",
+  "Node.js",
+  "TypeScript",
+  "Angular",
+  "PostgreSQL",
+  "AWS",
+  "Ionic",
+  "Capacitor",
+  "MongoDB",
+  "Express",
+];
 
 export const Home = (props: HomeProps) => {
   const { name, title } = props;
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
-  const { mousePosition, handleMouseMove } = useMousePosition();
+  const { inView, ref } = useInView({ threshold: 0.3, triggerOnce: true });
 
-  const { inView, ref } = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
+  const scrollTo = (id: string) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div
       id="home"
       ref={ref}
-      className={`relative pt-12 min-[1100px]:px-16 md:px-8 px-4 min-h-screen bg-gradient-dark overflow-hidden ${
-        isMenuOpen ? "touch-none" : ""
+      className={`relative min-h-screen bg-paper ${
+        isMenuOpen ? "overflow-hidden" : ""
       }`}
-      onMouseMove={handleMouseMove}
     >
-      {/* Animated Background Geometric Shapes */}
-      <div className="bg-geometric">
-        <div className="geometric-shape border-custom-cyan"></div>
-        <div className="geometric-shape border-neon-purple"></div>
-        <div className="geometric-shape border-neon-pink"></div>
-      </div>
-
-      {/* Floating Particles */}
-      <FloatingParticles count={6} />
-
       {/* Navigation */}
       <div className="sm:hidden">
         <MenuIcon isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </div>
-
       <div className="hidden sm:block">
         <NavBar isMobileView={false} setIsMenuOpen={setIsMenuOpen} />
       </div>
+      {isMenuOpen && <NavBar isMobileView={true} setIsMenuOpen={setIsMenuOpen} />}
 
-      {isMenuOpen && (
-        <NavBar isMobileView={true} setIsMenuOpen={setIsMenuOpen} />
-      )}
-
-      {/* Main Content */}
-      {!isMenuOpen && (
-        <div className="relative top-1/3 lg:mx-12 mx-4 perspective-1000">
-          {/* 3D Interactive Card Container */}
-          <div
-            className="relative z-10 transform-gpu transition-transform duration-300 ease-out"
-            style={{
-              transform: `perspective(1000px) rotateX(${
-                mousePosition.y * 0.1
-              }deg) rotateY(${mousePosition.x * 0.1}deg)`,
-            }}
-          >
-            {/* Glowing Background Card */}
-            <div className="absolute inset-0 bg-gradient-purple opacity-10 rounded-3xl blur-xl transform scale-105 animate-pulse-glow" />
-
-            {/* Main Content Card */}
-            <div className="relative glass-card rounded-2xl p-8 md:p-12 transform hover:scale-[1.02] transition-all duration-500">
-              {/* Hello Text with 3D Effect */}
-              <h3
-                className={`min-[1000px]:text-8xl min-[700px]:text-7xl text-5xl font-medium transition-all duration-1000 delay-300 ease-out neon-glow text-white hover-tilt ${
-                  inView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{
-                  transform: `translateZ(20px)`,
-                }}
-              >
-                Hello,
-              </h3>
-
-              {/* Name with Enhanced Animation */}
-              <h1
-                className={`min-[1000px]:text-8xl min-[700px]:text-7xl text-5xl leading-tight pt-4 font-bold transition-all duration-1000 delay-[1500ms] ease-out ${
-                  inView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
-                }`}
-                style={{
-                  transform: `translateZ(30px)`,
-                }}
-              >
-                I'm{" "}
-                <span className="bg-gradient-to-r from-custom-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent animate-color hover:animate-glitch">
-                  {name}
-                </span>
-                <span className="text-custom-cyan animate-color text-glow">
-                  .
-                </span>
-              </h1>
-
-              {/* Title with Typing Effect Enhanced */}
-              <div
-                className={`inline-block sm:text-2xl text-lg font-light sm:mt-6 mt-8 transition-all duration-1000 delay-[2700ms] ease-out ${
-                  inView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
-                }`}
-                style={{
-                  transform: `translateZ(15px)`,
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
-                  <h5 className="inline-block pr-[6px] overflow-hidden whitespace-nowrap border-r-[3px] border-custom-cyan animate-typing text-glow">
-                    {title}
-                  </h5>
-                </div>
-              </div>
-
-              {/* Interactive CTA Buttons */}
-              <div
-                className={`mt-8 transition-all duration-1000 delay-[3500ms] ease-out ${
-                  inView
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4"
-                }`}
-                style={{
-                  transform: `translateZ(25px)`,
-                }}
-              >
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                  <button
-                    className="group relative px-8 py-4 bg-gradient-cyan text-black font-semibold rounded-full overflow-hidden transform hover:scale-105 transition-all duration-300 card-3d"
-                    onClick={() =>
-                      document
-                        .getElementById("about")
-                        ?.scrollIntoView({ behavior: "smooth" })
-                    }
-                  >
-                    <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-                      Discover My Work
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute inset-0 animate-pulse-glow opacity-0 group-hover:opacity-50" />
-                  </button>
-
-                  <a
-                    href="https://github.com/yksolanki9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-700 text-white font-semibold rounded-full overflow-hidden transform hover:scale-105 transition-all duration-300 card-3d border border-gray-600 hover:border-custom-cyan"
-                  >
-                    <div className="flex items-center justify-center gap-3">
-                      <FontAwesomeIcon
-                        icon={faGithub}
-                        className="w-5 h-5 group-hover:animate-pulse"
-                      />
-                      <span className="relative z-10">
-                        <span className="block text-sm">yksolanki9</span>
-                      </span>
-                      <FontAwesomeIcon
-                        icon={faExternalLinkAlt}
-                        className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-custom-cyan/10 to-neon-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </a>
-                </div>
-              </div>
-            </div>
+      {/* Hero */}
+      <div className="max-w-content mx-auto px-6 lg:px-10 min-h-screen flex flex-col justify-center pt-24 pb-16">
+        <div
+          className={`reveal ${inView ? "is-visible" : ""} max-w-4xl`}
+        >
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-8">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 animate-ping" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+            </span>
+            <span className="text-xs sm:text-sm font-medium tracking-widest uppercase text-muted">
+              {title} · Mumbai, India
+            </span>
           </div>
 
-          {/* Floating Tech Icons */}
-          <div className="absolute -top-20 -right-10 opacity-20">
-            <div className="floating-element">
-              <div className="w-16 h-16 border-2 border-custom-cyan rounded-lg transform rotate-45 animate-rotate-slow" />
-            </div>
-          </div>
-          <div className="absolute top-1/2 -left-16 opacity-15">
-            <div className="floating-element">
-              <div className="w-12 h-12 border-2 border-neon-purple rounded-full animate-pulse" />
-            </div>
-          </div>
-          <div className="absolute -bottom-10 right-1/4 opacity-25">
-            <div className="floating-element">
-              <div className="w-8 h-8 bg-gradient-to-r from-neon-pink to-neon-orange rounded-full animate-tilt" />
-            </div>
-          </div>
-        </div>
-      )}
+          {/* Name */}
+          <h1 className="font-display text-[15vw] leading-[0.92] sm:text-8xl md:text-9xl tracking-tightest text-ink">
+            {name}
+          </h1>
 
-      {/* GitHub Stats - Subtle Integration */}
-      {!isMenuOpen && (
-        <GitHubStats
-          username="yksolanki9"
-          className={`transition-all duration-1000 delay-[4500ms] ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        />
-      )}
+          {/* Intro */}
+          <p className="mt-8 max-w-2xl text-xl sm:text-2xl leading-snug text-ink-soft">
+            <span className="text-ink font-medium">5+ years</span> of shipping
+            scalable software, from{" "}
+            <span className="text-ink font-medium">full-stack applications</span>{" "}
+            to <span className="text-ink font-medium">AI agents</span>, for
+            startups.
+          </p>
 
-      {/* Scroll Indicator */}
-      <div
-        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 delay-[4000ms] ${
-          inView && !isMenuOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-4"
-        }`}
-      >
-        <div className="hidden sm:flex flex-col items-center gap-2 animate-float ">
-          <span className="text-sm text-gray-400">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-custom-cyan rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-custom-cyan rounded-full mt-2 animate-pulse" />
+          {/* CTAs */}
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <button
+              onClick={() => scrollTo("journey")}
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-paper hover:bg-accent transition-colors"
+            >
+              View my work
+            </button>
+            <a
+              href={contactUrls.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 text-sm font-medium text-ink hover:border-ink transition-colors"
+            >
+              Résumé
+            </a>
+
+            {/* Socials */}
+            <div className="flex items-center gap-1 sm:ml-4">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="flex items-center justify-center w-10 h-10 rounded-full text-muted hover:text-ink hover:bg-paper-alt transition-colors"
+                >
+                  <FontAwesomeIcon icon={s.icon} className="w-[18px] h-[18px]" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom tech marquee */}
+      <div className="absolute bottom-0 inset-x-0 border-t border-line overflow-hidden py-4 bg-paper">
+        <div className="flex items-center gap-10 whitespace-nowrap animate-marquee w-max">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span
+              key={i}
+              className="text-sm font-medium tracking-wide text-faint flex items-center gap-10"
+            >
+              {item}
+              <span className="h-1 w-1 rounded-full bg-line" />
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Scroll cue */}
+      <button
+        onClick={() => scrollTo("about")}
+        aria-label="Scroll to about"
+        className="hidden lg:flex absolute bottom-20 right-10 items-center gap-2 text-xs tracking-widest uppercase text-faint hover:text-ink transition-colors"
+      >
+        Scroll
+        <FontAwesomeIcon icon={faArrowDown} className="w-3 h-3 animate-bounce" />
+      </button>
     </div>
   );
 };
