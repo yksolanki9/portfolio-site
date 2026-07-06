@@ -4,87 +4,28 @@ import { About } from "../components/About";
 import { Blogs } from "../components/Blogs";
 import { Contact } from "../components/Contact";
 import { Experience } from "../components/Experience";
+import { Footer } from "../components/Footer";
 import { Home } from "../components/Home";
 import { Projects } from "../components/Projects";
 import { ScrollProgressBar } from "../components/ui/ScrollProgressBar";
 import { about, name, projects, title, urls, workExperience } from "../data";
-import { createOptimizedScrollHandler } from "../utils/animations";
 
 const IndexPage: React.FC<PageProps> = () => {
   React.useEffect(() => {
-    // Smooth scrolling enhancement
     document.documentElement.style.scrollBehavior = "smooth";
-
-    // Add modern cursor for interactive elements
-    const addCursorEffect = () => {
-      const interactiveElements = document.querySelectorAll(
-        "button, a, .cursor-pointer"
-      );
-      interactiveElements.forEach((el) => {
-        el.addEventListener("mouseenter", () => {
-          document.body.style.cursor = "pointer";
-        });
-        el.addEventListener("mouseleave", () => {
-          document.body.style.cursor = "default";
-        });
-      });
-    };
-
-    // Add scroll-based parallax effect
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const parallaxElements = document.querySelectorAll(".parallax-element");
-
-      parallaxElements.forEach((el, index) => {
-        const speed = 0.5 + index * 0.1;
-        const yPos = -(scrolled * speed);
-        (el as HTMLElement).style.transform = `translateY(${yPos}px)`;
-      });
-    };
-
-    // Performance optimized scroll handler
-    const optimizedScrollHandler = createOptimizedScrollHandler(handleScroll);
-
-    window.addEventListener("scroll", optimizedScrollHandler);
-    addCursorEffect();
-
-    return () => {
-      window.removeEventListener("scroll", optimizedScrollHandler);
-    };
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      {/* Global Background Enhancement */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-700" />
-
-        {/* Floating geometric shapes */}
-        <div className="absolute top-10 left-10 w-32 h-32 border border-custom-cyan/20 rounded-full animate-float parallax-element" />
-        <div className="absolute top-1/4 right-20 w-24 h-24 border border-neon-purple/20 rounded-lg transform rotate-45 animate-rotate-slow parallax-element" />
-        <div className="absolute bottom-1/4 left-1/4 w-20 h-20 border border-neon-pink/20 rounded-full animate-pulse parallax-element" />
-        <div className="absolute bottom-20 right-1/4 w-16 h-16 border border-neon-green/20 rounded-lg animate-tilt parallax-element" />
-
-        {/* Dynamic light effects */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-custom-cyan/5 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-purple/5 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "3s" }}
-        />
-      </div>
-
+    <div className="relative min-h-screen overflow-x-hidden bg-paper">
       {/* Main Content */}
-      <main className="relative z-10" role="main">
+      <main role="main">
         {/* Hero Section */}
-        <section className="relative" id="home" aria-label="Introduction">
+        <section id="home" aria-label="Introduction">
           <Home name={name} title={title} />
         </section>
 
         {/* About Section */}
         <section
-          className="relative"
-          id="about"
           aria-label="About Yash Solanki - Full Stack Developer Mumbai"
         >
           <About about={about} />
@@ -92,40 +33,28 @@ const IndexPage: React.FC<PageProps> = () => {
 
         {/* Experience Section */}
         <section
-          className="relative"
-          id="journey"
           aria-label="Professional Experience - Y Combinator Startups"
         >
           <Experience workExperience={workExperience} />
         </section>
 
         {/* Projects Section */}
-        <section
-          className="relative"
-          id="projects"
-          aria-label="Technical Projects and Portfolio"
-        >
+        <section aria-label="Technical Projects and Portfolio">
           <Projects projects={projects} />
         </section>
 
-        {/* Blogs Section (minimal for now) */}
-        <section
-          className="relative py-20"
-          id="blog"
-          aria-label="Technical Blog and Articles"
-        >
+        {/* Blogs Section */}
+        <section aria-label="Technical Blog and Articles">
           <Blogs />
         </section>
 
         {/* Contact Section */}
-        <section
-          className="relative"
-          id="contact"
-          aria-label="Contact Information"
-        >
+        <section aria-label="Contact Information">
           <Contact urls={urls} />
         </section>
       </main>
+
+      <Footer />
 
       {/* Scroll Progress Indicator */}
       <ScrollProgressBar />
@@ -150,14 +79,15 @@ export default IndexPage;
 export const Head: HeadFC = () => (
   <>
     <title>
-      Yash Solanki - Senior Full Stack Developer Mumbai | YC Startup Engineer
+      Yash Solanki - Full Stack & AI Engineer Mumbai | YC Startup Engineer
     </title>
     <meta
       name="description"
-      content="Experienced Full Stack Developer in Mumbai with 4+ years building scalable web applications for Y Combinator startups. Expert in React, Node.js, Angular & mobile development. Currently Founding Engineer at Craze (YC S22)."
+      content="Full Stack & AI Engineer in Mumbai with 5+ years building scalable products for Y Combinator startups. First engineer at Craze (YC S22), now building agentic AI and video-generation products. Expert in React, Node.js, Angular, LLMs & AI agents."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#00DDFF" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href="https://yashsolanki.in/" />
 
     {/* SEO Keywords */}
     <meta
@@ -182,43 +112,50 @@ export const Head: HeadFC = () => (
     <meta name="revisit-after" content="7 days" />
 
     {/* Custom Favicon */}
-    <link rel="icon" type="image/svg+xml" href="/favicon-new.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-new.svg?v=2" />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/favicon-32x32-new.png"
+      href="/favicon-32x32-new.png?v=2"
     />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" href="/favicon-new.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png?v=2"
+    />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="/icons/icon-192x192.png"
+      href="/icons/icon-192x192.png?v=2"
     />
     <link rel="manifest" href="/manifest.webmanifest" />
 
     {/* Open Graph tags */}
     <meta
       property="og:title"
-      content="Yash Solanki - Senior Full Stack Developer Mumbai | YC Startup Engineer"
+      content="Yash Solanki - Full Stack & AI Engineer Mumbai | YC Startup Engineer"
     />
     <meta
       property="og:description"
-      content="Experienced Full Stack Developer in Mumbai with 4+ years building scalable applications for Y Combinator startups. Currently Founding Engineer at Craze (YC S22). Expert in React, Node.js, Angular."
+      content="Full Stack & AI Engineer in Mumbai with 5+ years building scalable products for Y Combinator startups. First engineer at Craze (YC S22), now building agentic AI and video-generation products. Expert in React, Node.js, Angular & LLMs."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yashsolanki.dev" />
+    <meta property="og:url" content="https://yashsolanki.in/" />
     <meta
       property="og:site_name"
-      content="Yash Solanki - Full Stack Developer"
+      content="Yash Solanki - Full Stack & AI Engineer"
     />
-    <meta property="og:image" content="/icons/icon-512x512.png" />
+    <meta
+      property="og:image"
+      content="https://yashsolanki.in/icons/icon-512x512.png"
+    />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta
       property="og:image:alt"
-      content="Yash Solanki - Full Stack Developer Portfolio"
+      content="Yash Solanki - Full Stack & AI Engineer Portfolio"
     />
     <meta property="og:locale" content="en_IN" />
 
@@ -226,19 +163,22 @@ export const Head: HeadFC = () => (
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Yash Solanki - Senior Full Stack Developer Mumbai | YC Startup Engineer"
+      content="Yash Solanki - Full Stack & AI Engineer Mumbai | YC Startup Engineer"
     />
     <meta
       name="twitter:description"
-      content="Experienced Full Stack Developer in Mumbai building scalable applications for Y Combinator startups. Founding Engineer at Craze (YC S22). Expert in React, Node.js, Angular."
+      content="Full Stack & AI Engineer in Mumbai building scalable products for Y Combinator startups. First engineer at Craze (YC S22), building agentic AI & video generation. Expert in React, Node.js, Angular & LLMs."
     />
-    <meta name="twitter:image" content="/icons/icon-512x512.png" />
+    <meta
+      name="twitter:image"
+      content="https://yashsolanki.in/icons/icon-512x512.png"
+    />
     <meta
       name="twitter:image:alt"
-      content="Yash Solanki - Full Stack Developer Portfolio"
+      content="Yash Solanki - Full Stack & AI Engineer Portfolio"
     />
-    <meta name="twitter:creator" content="@yashsolanki" />
-    <meta name="twitter:site" content="@yashsolanki" />
+    <meta name="twitter:creator" content="@yksolanki9" />
+    <meta name="twitter:site" content="@yksolanki9" />
 
     {/* JSON-LD Structured Data */}
     <script type="application/ld+json">
@@ -246,15 +186,18 @@ export const Head: HeadFC = () => (
         "@context": "https://schema.org",
         "@type": "Person",
         name: "Yash Solanki",
-        jobTitle: "Senior Full Stack Developer",
+        jobTitle: "Full Stack & AI Engineer",
         description:
-          "Experienced Full Stack Developer with 4+ years building scalable web applications for Y Combinator startups",
-        url: "https://yashsolanki.dev",
-        image: "https://yashsolanki.dev/icons/icon-512x512.png",
+          "Full Stack & AI Engineer with 5+ years building scalable products for Y Combinator startups. First engineer at Craze (YC S22), building agentic AI and video-generation products.",
+        url: "https://yashsolanki.in/",
+        image: "https://yashsolanki.in/icons/icon-512x512.png",
+        email: "mailto:yashsolanki1709@gmail.com",
         sameAs: [
           "https://github.com/yksolanki9",
-          "https://linkedin.com/in/yashsolanki",
-          "https://twitter.com/yashsolanki",
+          "https://www.linkedin.com/in/yashsolanki",
+          "https://twitter.com/yksolanki9",
+          "https://www.instagram.com/solanki1709",
+          "https://dev.to/yksolanki9",
         ],
         address: {
           "@type": "PostalAddress",
@@ -269,6 +212,10 @@ export const Head: HeadFC = () => (
         },
         knowsAbout: [
           "Full Stack Development",
+          "Agentic AI",
+          "AI Agents",
+          "Video Generation",
+          "Large Language Models",
           "React",
           "Node.js",
           "Angular",
@@ -301,13 +248,36 @@ export const Head: HeadFC = () => (
       })}
     </script>
 
+    {/* WebSite + ProfilePage Schema (helps search engines and AI assistants) */}
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        dateModified: "2026-07-07",
+        url: "https://yashsolanki.in/",
+        name: "Yash Solanki - Full Stack & AI Engineer",
+        mainEntity: {
+          "@type": "Person",
+          name: "Yash Solanki",
+          jobTitle: "Full Stack & AI Engineer",
+          url: "https://yashsolanki.in/",
+        },
+        about:
+          "Yash Solanki is a Full Stack & AI Engineer based in Mumbai, India, with 5+ years of experience. He is the first engineer at Craze (YC S22), where he builds agentic AI and AI video-generation products. Previously at Fyle (acquired by Sage), Jeevam Health (YC S20), and Samsung Research Institute.",
+        isPartOf: {
+          "@type": "WebSite",
+          name: "Yash Solanki",
+          url: "https://yashsolanki.in/",
+        },
+      })}
+    </script>
+
     {/* Performance optimizations */}
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-      rel="preload"
-      href="/fonts/Poppins-Regular.woff2"
-      as="font"
-      type="font/woff2"
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
       crossOrigin="anonymous"
     />
   </>

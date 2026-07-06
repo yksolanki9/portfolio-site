@@ -16,7 +16,7 @@ export const Analytics: React.FC = () => {
     }
     gtag("js", new Date());
     gtag("config", trackingId, {
-      page_title: "Yash Solanki - Senior Full Stack Developer Mumbai",
+      page_title: "Yash Solanki - Full Stack & AI Engineer Mumbai",
       page_location: window.location.href,
       send_page_view: true,
     });
