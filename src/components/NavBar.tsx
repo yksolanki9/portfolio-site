@@ -1,32 +1,39 @@
 import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { NAV_ITEMS } from "../constants";
+import { name } from "../data";
 import type { NavBarProps } from "../types";
 
 export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
-  const [activeSection, setActiveSection] = React.useState<string>("");
+  const [activeSection, setActiveSection] = React.useState<string>("home");
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   React.useEffect(() => {
     const sections = NAV_ITEMS.filter((item) => !item.external).map((item) =>
       item.href.substring(1)
     );
 
-    // Set up Intersection Observer for better performance
     const observerOptions: IntersectionObserverInit = {
       root: null,
-      rootMargin: "-20% 0px -60% 0px", // Trigger when section is in the middle portion of viewport
+      rootMargin: "-20% 0px -60% 0px",
       threshold: 0,
     };
 
-    let currentIntersections = new Map<string, boolean>();
+    const currentIntersections = new Map<string, boolean>();
 
     const observerCallback: IntersectionObserverCallback = (entries) => {
       entries.forEach((entry) => {
         currentIntersections.set(entry.target.id, entry.isIntersecting);
       });
 
-      // Find the first intersecting section in order
       let newActiveSection = "";
       for (const section of sections) {
         if (currentIntersections.get(section)) {
@@ -35,19 +42,14 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
         }
       }
 
-      // Update active section and URL using callback to avoid stale closure
       setActiveSection((currentActive) => {
-        if (newActiveSection !== currentActive) {
+        if (newActiveSection && newActiveSection !== currentActive) {
           if (newActiveSection === "home") {
-            // When home section is active, clear the URL fragment
             if (window.location.hash) {
               window.history.replaceState(null, "", window.location.pathname);
             }
-          } else if (newActiveSection) {
-            // Update URL fragment for other sections
-            if (window.location.hash !== `#${newActiveSection}`) {
-              window.history.replaceState(null, "", `#${newActiveSection}`);
-            }
+          } else if (window.location.hash !== `#${newActiveSection}`) {
+            window.history.replaceState(null, "", `#${newActiveSection}`);
           }
           return newActiveSection;
         }
@@ -60,7 +62,6 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
       observerOptions
     );
 
-    // Observe all sections
     sections.forEach((section) => {
       const element = document.getElementById(section);
       if (element) {
@@ -69,188 +70,157 @@ export const NavBar = ({ isMobileView, setIsMenuOpen }: NavBarProps) => {
       }
     });
 
-    // Handle initial hash on page load
     const hash = window.location.hash.substring(1);
     if (hash && NAV_ITEMS.some((item) => item.href === `#${hash}`)) {
       setActiveSection(hash);
-      // Scroll to the section after a brief delay to ensure DOM is ready
       setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
       }, 100);
-    } else {
-      // If no hash, start with home as active
-      setActiveSection("home");
     }
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   const handleNavClick = (href: string, external?: boolean) => {
     if (external) {
-      window.open(href, "_blank");
+      window.open(href, "_blank", "noopener,noreferrer");
     } else {
       const section = href.substring(1);
-
       if (section === "home") {
-        // For home section, use root URL
         window.history.pushState(null, "", window.location.pathname);
       } else {
-        // For other sections, use fragment
         window.history.pushState(null, "", href);
       }
-
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
         setActiveSection(section);
       }
     }
-    if (isMobileView) {
-      setIsMenuOpen(false);
-    }
+    if (isMobileView) setIsMenuOpen(false);
   };
 
   const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      setIsMenuOpen(false);
-    }
+    if (e.target === e.currentTarget) setIsMenuOpen(false);
   };
 
+  const brandInitials = "YS";
+
+  /* ---------------- Mobile overlay ---------------- */
   if (isMobileView) {
     return (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-lg"
+        className="fixed inset-0 z-50 bg-paper animate-fade-in"
         onClick={handleBackdropClick}
       >
-        <div className="glass-card rounded-3xl p-6 max-w-sm w-full mx-4 transform animate-slide-up">
-          {/* Mobile Menu Items */}
-          <nav className="space-y-4">
+        <div className="flex flex-col h-full px-6 pt-8 pb-12">
+          <div className="flex items-center justify-between">
+            <span className="font-display text-xl text-ink">{name}</span>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+              className="text-sm tracking-widest uppercase text-muted"
+            >
+              Close
+            </button>
+          </div>
+
+          <nav className="flex flex-col justify-center flex-1 gap-1">
             {NAV_ITEMS.map((item, index) => {
               const isActive =
                 !item.external && activeSection === item.href.substring(1);
-              const isResume = item.external;
               return (
                 <button
                   key={item.href}
                   onClick={() => handleNavClick(item.href, item.external)}
-                  className={`w-full group relative p-4 rounded-xl text-left transition-all duration-300 transform hover:scale-105 ${
-                    isActive
-                      ? "bg-gradient-to-r from-custom-cyan/30 to-neon-purple/30 text-white border-2 border-custom-cyan shadow-lg shadow-custom-cyan/20"
-                      : isResume
-                      ? "bg-transparent text-gray-300 hover:text-white border border-transparent hover:bg-glass-white/10"
-                      : "text-gray-300 hover:text-white hover:bg-glass-white border border-transparent hover:border-gray-600"
-                  }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="group flex items-baseline gap-4 py-2 text-left"
                 >
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`font-medium ${
-                        isActive || isResume ? "text-glow" : ""
-                      }`}
-                    >
-                      {item.label}
-                      {isResume && (
-                        <FontAwesomeIcon
-                          icon={faExternalLinkAlt}
-                          className="inline w-4 h-4 ml-2 animate-bounce text-neon-pink flex-shrink-0"
-                        />
-                      )}
-                    </span>
-                    <div
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        isActive
-                          ? "bg-custom-cyan animate-pulse shadow-sm shadow-custom-cyan"
-                          : isResume
-                          ? "bg-gray-500 group-hover:bg-gray-400"
-                          : "bg-gray-600 group-hover:bg-neon-purple"
-                      }`}
-                    />
-                  </div>
-
-                  {/* Enhanced animated underline */}
-                  <div
-                    className={`absolute bottom-0 left-4 right-4 h-[2px] transition-all duration-300 ${
+                  <span className="section-index text-xs text-faint w-8">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={`font-display text-4xl sm:text-5xl leading-tight transition-colors ${
                       isActive
-                        ? "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-100 shadow-sm shadow-custom-cyan/50"
-                        : isResume
-                        ? "bg-gradient-to-r from-gray-500 to-gray-400 opacity-0 group-hover:opacity-50"
-                        : "bg-gradient-to-r from-custom-cyan to-neon-purple opacity-0 group-hover:opacity-50"
+                        ? "text-accent"
+                        : "text-ink group-hover:text-accent"
                     }`}
-                  />
+                  >
+                    {item.label}
+                  </span>
+                  {item.external && (
+                    <FontAwesomeIcon
+                      icon={faArrowUpRightFromSquare}
+                      className="w-4 h-4 text-faint self-center"
+                    />
+                  )}
                 </button>
               );
             })}
           </nav>
-
-          {/* Close hint */}
-          <div className="text-center mt-8 text-gray-400 text-sm">
-            Tap anywhere outside to close
-          </div>
         </div>
       </div>
     );
   }
 
+  /* ---------------- Desktop top bar ---------------- */
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 animate-slide-down">
-      <div className="glass-card rounded-full px-6 py-3 shadow-2xl">
-        <ul className="flex items-center space-x-6">
-          {NAV_ITEMS.map((item, index) => {
+    <nav
+      className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
+        scrolled
+          ? "bg-paper/80 backdrop-blur-md border-b border-line"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="max-w-content mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+        <button
+          onClick={() => handleNavClick("#home")}
+          className="flex items-center gap-2 group"
+          aria-label="Home"
+        >
+          <span className="flex items-center justify-center w-8 h-8 rounded-full bg-ink text-paper text-xs font-semibold tracking-tight group-hover:bg-accent transition-colors">
+            {brandInitials}
+          </span>
+          <span className="font-display text-base text-ink hidden md:inline">
+            {name}
+          </span>
+        </button>
+
+        <ul className="flex items-center gap-1">
+          {NAV_ITEMS.map((item) => {
             const isActive =
               !item.external && activeSection === item.href.substring(1);
-            const isResume = item.external;
+            if (item.external) {
+              return (
+                <li key={item.href}>
+                  <button
+                    onClick={() => handleNavClick(item.href, true)}
+                    className="ml-2 inline-flex items-center gap-1.5 rounded-full border border-ink px-4 py-1.5 text-sm font-medium text-ink hover:bg-ink hover:text-paper transition-colors"
+                  >
+                    {item.label}
+                    <FontAwesomeIcon
+                      icon={faArrowUpRightFromSquare}
+                      className="w-3 h-3"
+                    />
+                  </button>
+                </li>
+              );
+            }
             return (
               <li key={item.href}>
                 <button
-                  onClick={() => handleNavClick(item.href, item.external)}
-                  className={`group relative transition-all duration-300 hover:scale-110 ${
+                  onClick={() => handleNavClick(item.href)}
+                  className={`relative px-3 py-1.5 text-sm font-medium transition-colors ${
                     isActive
-                      ? "px-4 py-2 text-sm font-medium text-custom-cyan text-glow"
-                      : isResume
-                      ? "px-6 py-2.5 bg-gradient-to-r from-neon-purple to-neon-pink text-white font-bold rounded-full shadow-lg shadow-neon-purple/30 hover:shadow-neon-pink/40 hover:from-neon-pink hover:to-neon-orange transform hover:scale-105"
-                      : "px-4 py-2 text-sm font-medium text-gray-300 hover:text-white"
+                      ? "text-ink"
+                      : "text-muted hover:text-ink"
                   }`}
-                  style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div
-                    className={`${
-                      isResume ? "flex items-center justify-center" : ""
+                  {item.label}
+                  <span
+                    className={`absolute left-3 right-3 -bottom-0.5 h-px bg-accent transition-transform duration-300 ${
+                      isActive ? "scale-x-100" : "scale-x-0"
                     }`}
-                  >
-                    {item.label}
-                    {isResume && (
-                      <FontAwesomeIcon
-                        icon={faExternalLinkAlt}
-                        className="w-4 h-4 ml-2 animate-bounce flex-shrink-0"
-                      />
-                    )}
-                  </div>
-
-                  {/* Active indicator - only for non-resume items */}
-                  {!isResume && (
-                    <div
-                      className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full transition-all duration-300 ${
-                        isActive
-                          ? "bg-custom-cyan animate-pulse"
-                          : "bg-transparent group-hover:bg-neon-purple"
-                      }`}
-                    />
-                  )}
-
-                  {/* Hover effect for navigation items - not resume */}
-                  {!isResume && (
-                    <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 bg-gradient-to-r from-custom-cyan/20 to-neon-purple/20" />
-                  )}
-
-                  {/* Enhanced glow effect for resume button */}
-                  {isResume && (
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-neon-purple/20 to-neon-pink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 animate-pulse" />
-                  )}
+                  />
                 </button>
               </li>
             );

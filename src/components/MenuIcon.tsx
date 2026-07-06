@@ -1,4 +1,5 @@
 import * as React from "react";
+import { name } from "../data";
 
 export const MenuIcon = ({
   isMenuOpen,
@@ -8,33 +9,45 @@ export const MenuIcon = ({
   setIsMenuOpen: Function;
 }) => {
   return (
-    <div className="menu-icon fixed top-6 right-6 z-50">
-      <button
-        onClick={() => setIsMenuOpen((prev: boolean) => !prev)}
-        className="cursor-pointer group p-3 bg-glass-dark rounded-xl border border-gray-600 hover:border-custom-cyan transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-custom-cyan/20"
-        aria-label="Toggle menu"
-      >
-        <div className="w-6 h-6 flex flex-col justify-center items-center space-y-1">
-          {/* Top line */}
-          <div
-            className={`w-6 h-0.5 bg-gradient-to-r from-custom-cyan to-neon-purple transition-all duration-300 ${
-              isMenuOpen ? "rotate-45 translate-y-2" : ""
+    <div className="fixed top-0 inset-x-0 z-[60] bg-paper/80 backdrop-blur-md border-b border-line">
+      <div className="flex items-center justify-between px-5 h-14">
+        <button
+          onClick={() =>
+            document
+              .getElementById("home")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+          className="flex items-center gap-2"
+          aria-label="Home"
+        >
+          <span className="flex items-center justify-center w-7 h-7 rounded-full bg-ink text-paper text-[11px] font-semibold">
+            YS
+          </span>
+          <span className="font-display text-sm text-ink">{name}</span>
+        </button>
+
+        <button
+          onClick={() => setIsMenuOpen((prev: boolean) => !prev)}
+          className="w-9 h-9 flex flex-col justify-center items-center gap-[5px]"
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block w-6 h-px bg-ink transition-all duration-300 ${
+              isMenuOpen ? "rotate-45 translate-y-[6px]" : ""
             }`}
           />
-          {/* Middle line */}
-          <div
-            className={`w-6 h-0.5 bg-gradient-to-r from-neon-purple to-neon-pink transition-all duration-300 ${
+          <span
+            className={`block w-6 h-px bg-ink transition-all duration-300 ${
               isMenuOpen ? "opacity-0" : ""
             }`}
           />
-          {/* Bottom line */}
-          <div
-            className={`w-6 h-0.5 bg-gradient-to-r from-neon-pink to-neon-orange transition-all duration-300 ${
-              isMenuOpen ? "-rotate-45 -translate-y-2" : ""
+          <span
+            className={`block w-6 h-px bg-ink transition-all duration-300 ${
+              isMenuOpen ? "-rotate-45 -translate-y-[6px]" : ""
             }`}
           />
-        </div>
-      </button>
+        </button>
+      </div>
     </div>
   );
 };
